@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>任务</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		
+	</head>
+		<style>
+			.mui-bar .mui-icon-camera {
+				line-height: 50px;
+				font-size: 40px;
+			}
+			.mui-bar .mui-title {
+			  right: 15px;
+			  }
+		</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="title">任务
+	
+			</h1>
+		</header>
+		<div class="mui-content"></div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js" ></script>	
+	<script type="text/javascript">
+		//启用双击监听
+		mui.init({
+			gestureConfig:{
+				doubletap:true
+			},
+			subpages:[{
+				url:'task-sub.html',
+				id:'task-sub.html',
+				styles:{
+					top: '50px',
+					bottom: '0px',
+				}
+			}]
+		});
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var type=self.type;
+		if(type==0){
+			document.getElementById('title').innerHTML='工作';
+		}else if(type==1){
+			document.getElementById('title').innerHTML='调查';
+		}else if(type==2){
+			document.getElementById('title').innerHTML='评论';
+		}else if(type==3){
+			document.getElementById('title').innerHTML='招募';
+		}else if(type==4){
+			document.getElementById('title').innerHTML='体验';
+		}else if(type==5){
+			document.getElementById('title').innerHTML='最新';
+		}else if(type==6){
+			document.getElementById('title').innerHTML='最热';
+		}else if(type==7){
+			document.getElementById('title').innerHTML='宅在家';
+		}else if(type==8){
+			document.getElementById('title').innerHTML='四处跑';
+		}else if(type==9){
+			document.getElementById('title').innerHTML='推荐任务';
+		}
+	});
+		var contentWebview = null;
+		document.querySelector('header').addEventListener('doubletap',function () {
+			if(contentWebview==null){
+				contentWebview = plus.webview.currentWebview().children()[0];
+			}
+			if(mui.os.ios){
+				contentWebview.evalJS("mui('#pullrefresh').pullRefresh().scrollTo(0,0,100)");
+			}else{
+				contentWebview.evalJS('mui.scrollTo(0, 100)');
+			}
+		});
+		
+/*		window.addEventListener('show',function(){
+			if(contentWebview==null){
+				contentWebview = plus.webview.currentWebview().children()[0];
+			}else{
+				//contentWebview.evalJS('checkDrivingStatus()');
+			}
+		});*/
+		
+		
+	</script>
+
+</html>

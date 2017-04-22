@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>车友 圈</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+		.dropdown-menu{
+		   	width: 100%;
+		  
+		   	border-radius: 0;
+		   	border:none;
+		   	margin:0;
+		   }
+		   .btn{
+		   	border-radius: 0;
+		   }
+		   .btn-group{
+		   	width: 49%;
+		   }
+			.mui-table-view li{
+				position: relative;
+			   overflow: hidden;
+			   padding: 5px 10px;
+			   background: #FFFFFF;
+			
+			}
+			ul.mui-table-view{
+				   margin-bottom: 10px;
+			}
+		
+			.mui-icon-location{
+				font-size: 16px;
+			}
+			
+		   .panel-white{
+		   	border-bottom: 1px solid #CCCCCC;
+		 
+		   }
+		
+			
+		</style>
+
+	</head>
+
+	<body>
+	<div class="panel-white">
+		
+	
+	<div class="btn-group">
+	<button type="button" class="btn  btn-block  dropdown-toggle" data-toggle="dropdown">
+	全部分类 <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+	<li><a href="#">全部分类</a></li>
+	<li><a href="#">调查</a></li>
+	<li><a href="#">评论</a></li>
+	<li><a href="#">体验</a></li>
+	<li><a href="#">招募</a></li>
+	
+	</ul>
+	</div>
+	<div class="btn-group">
+	<button type="button" class="btn  btn-block dropdown-toggle" data-toggle="dropdown">
+	智能排序 <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+	<li class="active"><a href="#">智能排序</a></li>
+	<li><a href="#">酬劳最高</a></li>
+	<li><a href="#">离我最近</a></li>
+	<li><a href="#">最新上线</a></li>
+	</ul>
+	</div>
+	</div>
+		<div id="pullrefreshMyTask" class="mui-content mui-scroll-wrapper">
+			<div id="task-list">
+							
+				<div class="mui-loading">
+					<div class="mui-spinner">
+					</div>
+				</div>	
+				<!--<ul class="mui-table-view" >
+				<li class="mui-table-view-cell task-list">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷1</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p >奖励:<span class="red">￥ 1.00</span></p>
+							<p>限额:<span class="green"> 100份</span></p>
+							
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span>
+			                </p>
+						    <p style="margin-top: 8px;">
+						    	<span> <span class="green">已完成10道</span> / 总计20道</span>
+						    	<a class="btn btn-success pull-right do-task"> 做任务</a></p>
+						</div>
+					</div>
+				</li>
+				</ul>
+				<ul class="mui-table-view" >
+				<li class="mui-table-view-cell task-list">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷2</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p style="padding-top: 8px;">奖励:<span class="red">￥ 1.00</span></p>
+							<p>限额:<span class="green"> 100份</span></p>
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span></p>
+			                
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					  <p style="margin-top: 8px;">
+						    	<span> <span class="green">已完成10道</span> / 总计20道</span>
+						    	<a class="btn  btn-success pull-right do-task"> 做任务</a></p>
+				</li>
+				</ul>
+				<ul class="mui-table-view" >
+				<li class="mui-table-view-cell task-list">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷3调研问卷3调研问卷3</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p style="padding-top: 8px;">奖励:<span class="red">￥ 1.00</span></p>
+							<p>限额:<span class="green"> 100份</span></p>
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span></p>
+			                   <p style="margin-top: 8px;">
+						    	<span> <span class="green">已完成10道</span> / 总计20道</span>
+						    	<a class="btn btn-success pull-right do-task"> 做任务</a></p>
+						</div>
+					</div>
+				</li>
+				</ul>-->
+
+			</div>
+		
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>	
+	<script type="text/javascript" src="../../js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js" ></script>
+	<script>
+		mui.init({
+				pullRefresh: {
+					container: '#pullrefreshMyTask',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+    
+	    //下拉刷新
+		function pulldownRefresh() {
+			console.log('下拉刷新');			
+			getMyTask('down');
+		}
+		//上拉加载更多
+		function pullupRefresh() {
+			getMyTask('up');
+		}
+		
+		window.addEventListener('refresh-down',function(){	
+			getMyTask('down');
+		});
+		
+		var page=1;
+		var status=0;
+		function getMyTask(direction){
+			
+			var user=app.getUserState();
+			
+			if(JSON.stringify(user)=='{}'){
+				$('#task-list').html('<p>请下拉刷新</p>');
+				return;
+			}
+			if(direction=='down'){
+				page=1;
+			}			
+			var data={
+				page:page,
+				direction:direction,
+				status:status,
+				locInfo:app.getLocInfo()
+			};
+			
+			mui.ajax({
+				url:config.getMyTaskUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				success:function(rs){
+					closePullRefresh();
+					if(rs=='nodata'){
+						if(direction=='down'){
+							$('#task-list').html('<p>暂时没有任务哦!</p>');
+						}else if(direction=='up'){
+							plus.nativeUI.toast('没有更多任务了!');
+						}
+						
+					}else{
+						page++;
+						if(direction=='down'){
+							$('#task-list').html(rs);
+						}else if(direction=='up'){
+							$('#task-list').append(rs);
+						}
+					}
+				},
+				error:function(e){
+					closePullRefresh();
+					plus.nativeUI.toast('刷新列表失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+		}
+		
+		
+		
+		mui(document).on('tap','.task-list',function(){
+				var task_guid=$(this).attr('task_guid');			
+				mui.openWindow({
+				url:'../task.html',
+				id:'task.html',
+				extras:{
+					task_guid:task_guid
+				},
+				waiting:{
+					autoShow:false,
+				}
+			});
+		});
+		
+		
+		
+		mui(document).on('tap','.do-task',function(){
+				var task_guid=this.getAttribute('task_guid');			
+				mui.openWindow({
+				url:'../task-do.html',
+				id:'task-do.html',
+				extras:{
+					task_guid:task_guid
+				},
+				waiting:{
+					autoShow:false,
+				}
+			});
+		});
+
+		//关闭刷新
+		function closePullRefresh(){			
+		mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); 		
+		mui('#pullrefresh').pullRefresh().endPullupToRefresh(); 	
+			
+		}
+		
+		
+		if (mui.os.plus) {
+				mui.plusReady(function() {
+					
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pulldownLoading();
+					}, 500);
+
+				});
+			} else {
+				mui.ready(function() {
+					
+					mui('#pullrefresh').pullRefresh().pulldownLoading();
+				});
+		}
+		
+		window.addEventListener('show',function(){
+			
+		});
+		
+
+		
+	
+	</script>
+</html>

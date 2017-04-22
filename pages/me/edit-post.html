@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+	   <link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+	   <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 50px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;	
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.head {
+				height: 60px;
+			}
+			#head {
+				line-height: 60px;
+			}
+			.head-img {
+				width: 60px;
+				height: 60px;
+			
+			}
+			#head-img1{
+				position: absolute;
+				bottom: 10px;right: 40px;
+				width: 40px;height: 40px;
+			}
+			.update{font-style: normal;color: #999999;margin-right: -25px;font-size: 15px}
+			
+			.mui-fullscreen{
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.z-mui-view{
+				height: 500px;
+			}
+			
+	    .mui-table-view .mui-media-object {
+		  line-height: 42px;
+		  max-width: 42px;
+		  height: 42px;
+		}
+			
+		.mui-table-view  .head-img {
+		   line-height: 65px;
+			max-width: 65px;
+		   height: auto;
+		   max-height: 65px;
+		}
+		
+		.mui-icon-gear{
+			color: #19ABF7;
+			font-size: 35px;
+		
+			
+		}
+		.icon-money{
+		  color: #F75C19;
+ 		  font-size: 35px;
+			
+		}
+		.mui-table-view .mui-media-object.mui-pull-left {
+		  margin-right: 20px;
+		}
+	
+		.list-title{
+			color: #000000;
+			font-size: 16px;
+			line-height: 28px;
+			
+		}
+		
+	/*	#list-menu .mui-table-view-cell{
+			padding: 8px 15px;
+		}*/
+		p#nick{
+		
+			color: #000000;
+			font-size: 18px;
+		}
+		.login-text{
+			line-height: 50px;
+			color: blue;
+			font-size: 16px;
+		}
+		span#add-profile{
+			font-size: 16px;
+			color: blue;
+			line-height: 50px;
+		}
+				</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">编辑个人学历与职业</h1>
+		</header>
+			<div class="mui-content">
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="form-group">
+					<label class="control-label">最高学历</label>
+					<select class="form-control" id="top-edu">
+						<option value="未受过教育或小学未毕业">未受过教育或小学未毕业</option>
+						<option value="小学毕业">小学毕业</option>
+						<option value="初中">初中</option>
+						<option value="高中、中专、技校或职高">高中、中专、技校或职高</option>
+						<option value="大专">大专</option>
+						<option value="本科">本科</option>
+						<option value="硕士及以上">硕士及以上</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">毕业院校</label>
+					<input type="text" class="form-control mui-input-clear"  id="graduate-school" name="graduate-school" placeholder="请输入毕业院校"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="">毕业时间</label>
+					<input type="text" class="form-control mui-input-clear"  id="graduate-time" name="graduate-time" placeholder="请输入毕业时间"/>
+
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">所学专业</label>
+					<input type="text" class="form-control mui-input-clear"  id="major" name="major" placeholder="请输入所学专业"/>
+
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">英语水平</label>
+						<select class="form-control" id="english-level">
+						<option value="英语四级">英语四级</option>
+						<option value="英语六级">英语六级</option>
+						<option value="专业四级">专业四级</option>
+						<option value="专业八级">专业八级</option>
+						<option value="托福">托福</option>
+						<option value="雅思">雅思</option>
+						<option value="未参加">未参加</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">计算机能力</label>
+					<select class="form-control" id="computer-level">
+						<option value="一般">一般</option>
+						<option value="熟练">熟练</option>
+						<option value="精通">精通</option>
+					</select>
+					</div>
+					
+					
+				
+				</li>
+				
+				
+				
+						
+				</ul>
+				
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+					<div class="form-group">
+					<label class="control-label">职业</label>
+					<select class="form-control" id="post">
+						<option value="广告、公关、传媒或市场调研行业职员">广告、公关、传媒或市场调研行业职员</option>
+						<option value="国家公务员">国家公务员</option>
+						<option value="企业或事业单位管理人员">企业或事业单位管理人员</option>
+						<option value="企业或事业单位职员/雇员">企业或事业单位职员/雇员</option>
+						<option value="个体或小规模经营的业主">个体或小规模经营的业主</option>
+						<option value="个体或小规模经营的雇员">个体或小规模经营的雇员</option>
+						<option value="军警">军警</option>
+						<option value="在校学生">在校学生</option>
+						<option value="离退休人员">离退休人员</option>
+						<option value="失业或无业人员">失业或无业人员</option>
+						<option value="其他">其他</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">个人月收入(税后)</label>
+					<select class="form-control" id="income-level">
+						<option value="小于500">小于500</option>
+						<option value="500-1000">500-1000</option>
+						<option value="1001-1500">1001-1500</option>
+						<option value="1501-2000">1501-2000</option>
+						<option value="2001-4000">2001-4000</option>
+						<option value="4001-6000">4001-6000</option>
+						<option value="6001-8000">6001-8000</option>
+						<option value="8001-10000">8001-10000</option>
+						<option value="10001-15000">10001-15000</option>
+						<option value="15001-20000">15001-20000</option>
+						<option value="20001-25000">20001-25000</option>
+						<option value="25001-30000">25001-30000</option>
+						<option value="30001及以上">30001及以上</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">从业经历(50-200字)</label>
+					<textarea class="form-control" id="work-experience" rows="5"></textarea>
+					</div>
+					
+					
+					</li>
+				
+				</ul>
+				<div class="panel-white">
+				<button class="mui-btn mui-btn-warning mui-btn-block" id="submit"> 提交</button>
+			
+				</div>
+				
+				</div>
+			
+		
+					
+	
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+    <script type="text/javascript" src="../../js/lrz.bundle.js" ></script>
+	<script src="../../js/zepto_1.1.3.js"></script>
+	<script>
+		mui.init();
+		
+		//获取用户信息
+			
+			mui.plusReady(function() {
+				
+				checkUserState();												
+			});
+		
+		window.addEventListener('show',function(){
+			checkUserState();
+		});
+		
+		function checkUserState(){
+			//获取用户信息
+			    var userInfo=app.getUserInfo();	
+			   
+			    if(userInfo.top_edu!=null){
+			    	document.getElementById("top-edu").value=userInfo.top_edu;	
+			    }							
+				if(userInfo.graduate_school!=null){
+					document.getElementById("graduate-school").value=userInfo.graduate_school;
+				}
+				if(userInfo.graduate_time!=null){
+					document.getElementById("graduate-time").value=userInfo.graduate_time;
+				}
+							
+				if(userInfo.major!=null){
+					document.getElementById("major").value=userInfo.major;
+				}
+				
+				if(userInfo.english_level!=null){
+					document.getElementById("english-level").value=userInfo.english_level;
+				}
+				
+				if(userInfo.computer_level!=null){
+					document.getElementById("computer-level").value=userInfo.computer_level;
+				}
+				
+				if(userInfo.post!=null){
+					document.getElementById("post").value=userInfo.post;
+				}
+				if(userInfo.income_level!=null){
+					document.getElementById("income-level").value=userInfo.income_level;
+				}
+				if(userInfo.work_experience!=null){
+					document.getElementById("work-experience").value=userInfo.work_experience;
+				}
+		}
+		
+		document.getElementById("graduate-time").addEventListener('focus',function () {
+			  	var dDate=new Date();				
+				var minDate=new Date();				
+				var maxDate=new Date();
+				minDate.setFullYear(1960,1,1);
+				plus.nativeUI.pickDate( function(e) {			
+					var d=e.date;			
+					document.getElementById("graduate-time").value = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+ d.getDate();
+				   document.getElementById("graduate-time").blur();
+				},function(e){
+					document.getElementById("graduate-time").value  = "您没有选择日期";
+					 document.getElementById("graduate-time").blur();
+				},{title:"请选择日期",date:dDate,minDate:minDate,maxDate:maxDate});
+			});
+		
+		document.getElementById('submit').addEventListener('tap',function(){
+			var top_edu=$("#top-edu").val();
+			if(!top_edu){
+				alert('请填写最高学历');
+				return;
+			}
+			
+			var graduate_school=$("#graduate-school").val();
+			if(!graduate_school){
+				alert('请填写毕业院校');
+				return;
+			}
+			
+			var graduate_time=$("#graduate-time").val();
+			if(!graduate_time){
+				alert('请填写毕业时间');
+				return;
+			}
+			
+			var major=$('#major').val();
+			if(!major){
+				alert("请填写所学专业");
+				return;
+			}
+			var english_level=$('#english-level').val();
+			if(!english_level){
+				alert("请填写所学专业");
+				return;
+			}
+			var computer_level=$('#computer-level').val();
+			if(!computer_level){
+				alert("请填写计算机能力");
+				return;
+			}
+			
+			var post=$('#post').val();
+			if(!post){
+				alert("请填写职业");
+				return;
+			}
+			
+			var income_level=$('#income-level').val();
+			if(!income_level){
+				alert("请填写个人月收入");
+				return;
+			}
+			
+			var work_experience=$('#work-experience').val();
+			if(!work_experience){
+				alert("请填写从业经历");
+				return;
+			}
+			
+			
+			
+			
+			var data={
+				top_edu:top_edu,
+				graduate_school:graduate_school,
+				graduate_time:graduate_time,
+				english_level:english_level,
+				major:major,
+				computer_level:computer_level,
+				post:post,
+				income_level:income_level,
+				work_experience:work_experience,
+			};
+			
+			plus.nativeUI.showWaiting('正在提交,请稍候...');
+			$.ajax({
+				type:"post",
+				url:config.updatePostUrl,
+				data:{
+					user:app.getUserState(),
+					data:data
+				},
+				dataType:'json',
+				success:function(rs){
+					plus.nativeUI.closeWaiting();
+					if(rs.result=='success'){
+						localStorage.setItem('$user',JSON.stringify(rs.data));
+						mui.toast('提交成功!');
+						var post=plus.webview.getWebviewById('post.html');
+						mui.fire(post,'show',null);
+						mui.back();
+					}else{
+						console.log(JSON.stringify(e));
+					   mui.toast('提交失败,请稍后重试..');
+					}
+				},
+				error:function(e){
+					plus.nativeUI.closeWaiting();
+					console.log(JSON.stringify(e));
+					mui.toast('提交失败,请稍后重试..');
+				}
+			});
+		});
+	
+	
+		
+	</script>
+
+</html>

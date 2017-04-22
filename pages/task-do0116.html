@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>做任务</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" href="../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/record.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+		<link rel="stylesheet" href="../css/feedback-page.css" />
+		<style>
+		.mui-bar-nav~.mui-content {
+ 			 padding-top: 60px;
+ 			 background: #fff;
+ 		}
+			
+			.mui-table-view li img{
+				
+			}  
+		
+			.mui-table-view li{
+				position: relative;
+			   overflow: hidden;
+			
+			   background: #FFFFFF;
+			
+			}
+			.mui-table-view:after{
+				background: none;
+			}
+			ul.mui-table-view{
+				  width: 100%;
+				    min-height: 1000px;
+			}
+			
+			ul.mui-table-view.mui-grid-view.mui-grid-9{
+				min-height: 100%;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+			margin-top: 0;	
+			}
+		
+			.mui-icon-location{
+				font-size: 16px;
+			}
+			.progress {
+				height: 3px;
+				margin-bottom: 5px;
+				margin-top: 5px;
+			}
+		
+		   p{
+		   	margin-bottom: 10px !important;
+		   }
+		
+			.img-container {
+				text-align: center;
+				margin: 0 auto;
+			}
+			
+			
+		</style>
+
+	</head>
+
+	<body>
+	<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">做任务</h1>
+		</header>
+		<div class="mui-content">
+				<!--<div class="mui-loading">
+					<div class="mui-spinner">
+					</div>
+				</div>	-->
+		<div class="swiper-container">
+        <div class="swiper-wrapper" id="slider">
+            <div class="swiper-slide" id="q1" type="1">
+				<ul class="mui-table-view " >
+				<li class="mui-table-view-cell">
+					<p>1、问卷调研1(单选题)</p>
+					<form class="mui-input-group">
+						<div class="mui-input-row mui-radio mui-left">
+						<label>选项1</label>
+						<input name="checkbox" value="Item1" type="radio" checked="checked" >
+					  </div>
+					  
+						<div class="mui-input-row mui-radio mui-left">
+						<label>选项2</label>
+						<input name="checkbox" value="Item" type="radio" >
+					   </div>
+					   <div class="mui-input-row mui-radio mui-left">
+						<label>选项3</label>
+						<input name="checkbox" value="Item1" type="radio" >
+					   </div>
+					   <div class="mui-input-row mui-radio mui-left">
+						<label>选项4</label>
+						<input name="checkbox" value="Item" type="radio" >
+					   </div>
+					 </form>
+					 <p class="mui-content-padded center" >
+					 <button class="mui-btn mui-btn-primary next" type="0"> 下一题</button>
+					</p>
+				</li>
+				</ul>
+			</div>	
+			<div class="swiper-slide" id="q2" type="2">
+				<ul class="mui-table-view" >
+				<li class="mui-table-view-cell" >
+					<p>2、问卷调研1(多选题)</p>
+					<form class="mui-input-group">
+						<div class="mui-input-row mui-checkbox mui-left">
+						<label>选项1</label>
+						<input name="checkbox" value="Item1" type="checkbox" >
+					  </div>
+					  
+						<div class="mui-input-row mui-checkbox mui-left">
+						<label>选项2</label>
+						<input name="checkbox" value="Item2" type="checkbox" >
+					   </div>
+					   <div class="mui-input-row mui-checkbox mui-left">
+						<label>选项3</label>
+						<input name="checkbox" value="Item3" type="checkbox" >
+					   </div>
+					   <div class="mui-input-row mui-checkbox mui-left">
+						<label>选项4</label>
+						<input name="checkbox" value="Item4" type="checkbox" >
+					   </div>
+					 </form>
+					 <p class="mui-content-padded center" >
+					 <button class="mui-btn mui-btn-primary next" type="1"> 下一题</button>
+					</p>
+				</li>
+				</ul>
+				</div>
+			<div class="swiper-slide">	
+				<ul class="mui-table-view" >
+				
+				<li class="mui-table-view-cell">
+					<p class="bold">3、问卷调研1(文本题)</p>
+											
+					
+				</li>
+				<li class="mui-table-view-cell">
+				<textarea  rows="5" ></textarea>
+
+					 <p class="mui-content-padded center" >
+					 <button class="mui-btn mui-btn-primary " type="2"> 下一题</button>
+					</p>
+				</li>
+				</ul>
+				</div>
+				<div class="swiper-slide">
+				<ul class="mui-table-view" >
+				
+				<li class="mui-table-view-cell">
+					
+					<p class="bold">4、问卷调研1(图片题)</p>
+				
+				</li>
+					<div class="feedback">	
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<div id='image-list' class="row image-list">
+								<div class="image-item space">
+								<div class="image-close">X</div>
+								</div>
+									
+							     </div>
+							</li>
+					
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<div id='image-list' class="row image-list">
+								<div class="image-item space">
+								<div class="image-close">X</div>
+								</div>
+									
+							     </div>
+							</li>
+							
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<div id='image-list' class="row image-list">
+								<div class="image-item space">
+								<div class="image-close">X</div>
+								</div>
+									
+							     </div>
+							</li>
+				    </ul>
+				    
+				     
+				   
+					<p class="mui-content-padded center" >
+					 <button class="mui-btn mui-btn-primary" type="3"> 下一题</button>
+					</p>
+					</div>
+				</ul>
+			</div>
+			<div class="swiper-slide ">
+				<ul class="mui-table-view" >
+				
+				<li class="mui-table-view-cell ">
+					
+					<p class="bold">5、问卷调研1(音频题)</p>
+				</li>
+				
+				<li class="mui-table-view-cell ">
+					<div>						
+					<button class="mui-btn mui-btn-warning mui-btn-block" onclick="startRecord()">开始录音</button>
+					<ul id="history" class="dlist" style="text-align:left;">
+						<li id="empty" class="ditem-empty"></li>
+					</ul>
+					<p class="mui-content-padded center" >
+					 <button class="mui-btn mui-btn-primary next" type="4" > 下一题</button>
+					</p>
+					</div>
+				</li>
+				</ul>
+		   </div>
+		   
+		   <div class="swiper-slide ">
+				<ul class="mui-table-view" >
+				
+				<li class="mui-table-view-cell ">
+					
+					<p class="bold">6、问卷调研1(二维码题)</p>
+				</li>
+				
+				<li class="mui-table-view-cell ">
+					
+						<div id="dcontent" class="dcontent mui-center">
+						<br/>
+						<img style="width:40%" class="center" id="bimg" src="../images/barcode.png"/>
+						<br/>
+						<br/>
+						<div class="mui-btn mui-btn-danger mui-btn-block" onclick="clicked('barcode_scan.html',true,true);">扫一扫</div>
+						<br/>
+						<ul id="history" class="dlist" style="text-align:left;">
+							<li id="nohistory" class="ditem" onclick="onempty();">	</li>
+						</ul>
+						<br/>
+						
+					</div>
+				</li>
+				</ul>
+		   </div>
+		   
+			</div>
+			</div>
+	</div>		
+		<div id="play" class="rp">
+			<div id="ptime" class="ptime">00:00:00/00:00:00</div><br/>
+			<div id="progress" class="progress"><div id="schedule" class="schedule"></div></div>
+			<br/>
+			<div class="stop" onclick="stopPlay();"></div>
+		</div>
+		<div id="record" class="rp">
+			<div style="width:100%;height:20%;"></div>
+			<div class="rprogress"><div class="rschedule"></div></div>
+			<br/>
+			<div id="rtime" class="rtime">00:00:00</div><br/>
+			<div class="stop" onclick="stopRecord();"></div>
+		</div>
+</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/common.js" ></script>
+	<script type="text/javascript" src="../js/record.js" ></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/config.js"></script>	
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+	<script type="text/javascript" src="../js/lrz.bundle.js" ></script>
+	<script type="text/javascript" src="../js/swiper.min.js" ></script>
+	<script type="text/javascript" src="../js/task-photo-add.js" ></script>
+	<script type="text/javascript" src="../js/scan-barcode.js" ></script>
+	<script>
+		var swiper =null;
+	function initSwiper(){
+		var flag=0;
+		swiper= new Swiper('.swiper-container', {
+		        paginationClickable: true,
+		        spaceBetween: 0,
+		        centeredSlides: true,
+		        noSwiping : true,
+		        autoplayDisableOnInteraction: false,
+		        onSlideChangeStart: function(swiper){
+		        	
+		        	var index=swiper.activeIndex;
+		        	var that=$('#q'+parseInt(index));
+		       
+		        	
+		        	var task_guid=that.attr('task_guid');
+					var type=that.attr('type');
+					var code=parseInt(that.attr('code'));
+					var question_guid=that.attr('question_guid');
+					var answer="";
+		if(type==0){
+			 answer=that.find(" input[type=radio]:checked").val();
+			
+			if(!answer){
+				
+				//mui.toast('请至少选择一项');
+				return false;
+			}else{
+			
+			}
+		}else if(type==1){
+			if(!that.find(" input[type=checkbox]:checked").val()){
+			
+				//mui.toast('请至少选择一项');
+				return;
+			}else{
+				var i=0;
+				that.find(" input[type=checkbox]:checked").each(function(){
+					answer[i++]=$(this).val();
+				});				
+			}
+		}else if(type==2){
+			
+			if(!that.find(" textarea").val()){
+				//mui.toast('请填写答案');
+				return;
+			}else{
+				answer=that.find(" textarea").val()
+			}
+		}else if(type==3){
+			if(!that.parent().parent().find(" #imgLen").val()){			
+				//mui.toast('请拍照片');
+				return;
+			}
+		}
+		
+		
+			//保存答案
+			var data={
+					task_guid:task_guid,
+					question_guid:question_guid,
+					type:type,
+					code:code,
+					answer:answer	
+				};
+				console.log(JSON.stringify(data));
+				plus.storage.setItem('answer-'+task_guid+question_guid,JSON.stringify(data));
+			     
+			   },
+			
+		    });
+	}
+	initSwiper();
+	mui.init();
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var task_guid=self.task_guid;
+		getTaskQuestion(task_guid);
+	});
+
+	function getTaskQuestion(task_guid){
+		var user=app.getUserState();
+					
+			var data={
+				task_guid:task_guid,						
+			
+			};
+			
+			mui.ajax({
+				url:config.getTaskQuestionUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				success:function(rs){
+					$('.mui-content').html(rs);
+					$('.mui-bar h1').html($('.question_name').attr('name'));
+					var task_guid=$('.question_name').attr('task_guid');
+					initSwiper();
+					checkLocalAnswer(task_guid);
+					
+				},
+				error:function(e){
+					$('.mui-content').html('<p>获取任务信息失败!</p>');
+					plus.nativeUI.toast('获取任务信息失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+			
+	}
+	
+	$(document).on('click',':radio',function(){
+		var that=$(this);
+		var link=that.attr('link');
+		var code=that.attr('code');
+		if(link==0||link==""){
+			return;
+		}
+		console.log("code"+code);
+		console.log("link"+link);
+		
+		that.parent().parent().find('input[type=radio]').each(function(){
+			var linkArr=$(this).attr('link');
+			
+			if(linkArr!=0||linkArr!=""){
+				console.log('#linkArr'+linkArr);
+				for(var i=parseInt(code);i<=linkArr;i++){
+					console.log('#q'+i);
+					$('#q'+i).addClass('hide');
+				}
+			}
+		});
+		
+		$('#q'+link).removeClass('hide');
+		$('#q'+code).removeClass('hide');
+	});
+	
+	$(document).on('click','.next',function(){
+	
+		var that=$(this);
+		var task_guid=that.attr('task_guid');
+		var type=that.attr('type');
+		var code=parseInt(that.attr('code'));
+		var question_guid=that.attr('question_guid');
+		var answer="";
+		
+		if(type==0){//单选题
+			 answer=that.parent().parent().find(" input[type=radio]:checked").val();
+			
+			/*if(!answer){
+				alert('请至少选择一项');
+				return;
+			}else{
+			
+			}*/
+		}else if(type==1){//多选题
+			if(!that.parent().parent().find(" input[type=checkbox]:checked").val()){
+				//alert('请至少选择一项');
+				return;
+			}else{
+				var i=0;
+				that.parent().parent().find(" input[type=checkbox]:checked").each(function(){
+					answer[i++]=$(this).val();
+				});				
+			}
+		}else if(type==2){//填空题
+			
+			if(!that.parent().parent().find(" textarea").val()){
+				//alert('请填写答案');
+				return;
+			}else{
+				answer=that.parent().parent().find(" textarea").val()
+			}
+		}else if(type==3){//图片题
+			if(!that.parent().parent().find(" #imgLen").val()){
+				//alert('请拍照片');
+				return;
+			}else{
+				answer=photos;
+				photos=[];
+			}
+		}else if(type==4){//语音题
+			
+		}else if(type==5){//二维码题
+			
+		}
+		
+		
+			//保存答案
+			var data={
+					task_guid:task_guid,
+					question_guid:question_guid,
+					type:type,
+					code:code,
+					answer:answer	
+				};
+				console.log(JSON.stringify(data));
+				plus.storage.setItem('answer-'+task_guid+question_guid,JSON.stringify(data));
+				swiper.unlockSwipes();
+			    swiper.slideNext();
+		//进入下一题
+	/*	if(type==0){
+			var link=that.parent().parent().find(" input[type=radio]:checked").attr('link');
+			
+			$(".mui-table-view").addClass('hide');
+			$('#q'+link).removeClass('hide');
+		}else{
+			$(".mui-table-view").addClass('hide');
+			$('#q'+parseInt(code+1)).removeClass('hide');
+		}
+		*/
+		
+	});
+	
+	function checkLocalAnswer(task_guid){
+		/*var oldData=plus.storage.getItem('answer-'+task_guid);
+		oldData=JSON.parse(oldData);
+		if(!oldData){
+			return;
+		}else{*/
+						
+		/*	var localAnswer=oldData[oldData.length-1];
+			$('.mui-table-view').addClass('hide');
+			$('#q'+parseInt(localAnswer.code+1)).removeClass('hide');*/			
+		//}
+		var code=1;
+		$('.swiper-slide').each(function(){
+			var that=$(this);
+			var task_guid=that.attr('task_guid');
+			var question_guid=that.attr('question_guid');
+			
+			var type=that.attr('type');
+			
+			var answer=plus.storage.getItem('answer-'+task_guid+question_guid);
+			console.log(answer);
+			if(answer){
+				answer=JSON.parse(answer);
+				var scode=answer.code;
+				if(scode>code){
+				code=scode;
+			}
+				
+				var that=$('#q'+scode);
+				if(type==0){
+					that.find('input[type=radio]').each(function(){
+						if($(this).val()==answer.answer){
+							$(this).attr('checked','checked');
+						}
+					})
+				}else if(type==1){
+					that.find('input[type=checkbox]').each(function(){
+						if($(this).val()==answer.answer){
+							$(this).attr('checked','checked');
+						}
+					})
+				}else if(type==2){
+					that.find('textarea').val(answer.answer);
+				}else if(type==3){
+					
+				}
+			}
+		});
+		
+		swiper.slideTo(parseInt(code-1));
+	}
+	
+	mui(document).on('click','.submit',function(){
+		plus.nativeUI.showWaiting('正在提交,请稍候...');
+		
+		setTimeout(function(){
+			plus.nativeUI.closeWaiting();
+			mui.toast('提交成功!');
+			mui.back();
+		},6000);
+	});
+	
+	
+	</script>
+</html>

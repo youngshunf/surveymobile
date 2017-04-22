@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>车联</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+			.mui-slider-indicator {
+				bottom: 0;
+			}
+			.mui-slider {
+				background-color: #f2f2f2;
+			}
+			.title{
+				font-weight: bold;
+			}
+			.mui-icon-map{
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">		
+			<h1 class="mui-title">首页
+			<span class="mui-icon mui-icon-map mui-pull-right" id="maplist"></span>
+			</h1>
+		</header>
+		<div class="mui-content">		
+			
+			<div id="slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../../images/banner1.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../../images/banner1.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../../images/banner2.png">
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../../images/banner3.png">
+					</a>
+				</div>	
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../../images/banner4.png">
+					</a>
+				</div>	
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../../images/banner4.png">
+					</a>
+				</div>
+				
+			</div>		
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+		</div>
+			
+			<div id="Gallery" class="mui-slider" >
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#" id="survey">
+									<img src="../../images/diaocha.png" />
+									<div class="mui-media-body">调查</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#" id="comment">
+									<img src="../../images/pinglun.png" />
+									<div class="mui-media-body">评论</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#" id="zhaomu">
+									<img src="../../images/zhaomu.png" />
+									<div class="mui-media-body">招募</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#" id="tiyan">
+									<img src="../../images/tiyan.png" />
+									<div class="mui-media-body">体验</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#"  id='newTask'>
+									<div class="circle orange-info">
+									 NEW
+						        </div>
+						    
+									<div class="mui-media-body orange">最新</div>
+								</a>
+							</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#"  id='hotTask'>
+									<div class="circle orange-info">
+									 HOT
+						        </div>
+									<div class="mui-media-body orange">最热</div>
+								</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#"  id='home'>
+									<div class="circle orange-info">
+									 家
+						        </div>
+									<div class="mui-media-body orange">宅在家</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+								<a href="#" id='run'>
+									<div class="circle orange-info">
+									跑
+						       		 </div>
+									<div class="mui-media-body">四处跑</div>
+								</a>
+							</li>
+						
+						
+						
+						</ul>
+					</div>
+					
+		
+		
+				</div>	
+			
+			</div>
+			
+			
+			<ul class="mui-table-view" style="margin-top: 10px;">
+				<li class="mui-table-view-cell" id="more-task">
+					<h5>推荐任务 <a class="mui-pull-right" >更多</a></h5>				
+				</li>
+			</ul>
+			<div id="recommend-task" >
+				
+				<div class="mui-loading">
+					<div class="mui-spinner">
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js" ></script>
+	<script type="text/javascript" src="../../js/jquery-1.8.3.min.js" ></script>
+	<script>
+		mui.init();
+		mui.ready(function() {
+		var slider = mui("#slider");
+			slider.slider({
+			  interval: 2500
+			});
+	  
+		document.getElementById('survey').addEventListener('tap',function(){
+				mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+						extras:{
+							type:1
+						}
+				});
+						//检查登陆,登录之后才能跳转
+		/*	app.checkLogin(function(login){
+					if(login){
+						mui.openWindow({
+						url:'maintain.html',
+						id:'maintain.html',
+						waiting:{
+							autoShow:false
+							}
+						});
+					}
+			});		*/
+	
+		});
+		
+		document.getElementById('comment').addEventListener('tap',function(){
+			
+			mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+						extras:{
+							type:2
+						}
+						});
+		});
+		
+		//var webview= plus.webview.getWebviewById('illegal.html');
+		
+		document.getElementById('zhaomu').addEventListener('tap',function(){
+			//检查登陆,登录之后才能跳转		
+						mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+						extras:{
+							type:3
+						}
+						});
+				
+	
+		});
+		
+		document.getElementById('tiyan').addEventListener('tap',function(){				
+					mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:4
+								}
+						});
+					
+			
+	
+		});
+		
+		document.getElementById('newTask').addEventListener('tap',function(){
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:5
+								}
+						});
+		});
+		
+		document.getElementById('hotTask').addEventListener('tap',function(){
+			//检查登陆,登录之后才能跳转
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:6
+								}
+						});
+		
+	
+		});
+		
+		//宅在家
+		document.getElementById('home').addEventListener('tap',function(){		
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:7
+								}
+						});								
+	
+		});
+		//四处跑
+		document.getElementById('run').addEventListener('tap',function(){		
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:8
+								}
+						});								
+	
+		});
+		
+		document.getElementById('more-task').addEventListener('tap',function(){		
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:9
+								}
+						});								
+	
+		});
+		
+		//地图模式
+			document.getElementById('maplist').addEventListener('tap',function(){
+							mui.openWindow({
+							url:'map-list.html',
+							id:'map-list.html',
+							
+							});									
+		
+			 });		
+		});
+		
+		mui(document).on('tap','.task-list',function(){
+			var task_guid=$(this).attr('task_guid');
+			mui.openWindow({
+				url:'../task-detail.html',
+				id:'task-detail.html',
+				extras:{
+				task_guid:task_guid
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+	<script type="text/javascript" src="../../js/home.get-recommond.js" ></script>
+	<script type="text/javascript" src="../../js/get-task.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			getRecommendList();
+		});
+		
+		window.addEventListener('show',function(){
+			getRecommendList();
+		});
+	</script>
+</html>

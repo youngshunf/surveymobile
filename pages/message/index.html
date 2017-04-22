@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资讯</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+		<link rel="stylesheet" href="../../css/fontAwsome/css/font-awesome.min.css" />
+		<style>
+		.fa{
+			font-size: 25px;
+			margin:4px 10px;
+			color: rgb(255,144,27);
+			width:30px;
+			text-align: center;
+		}
+		.mui-bar .mui-title {
+		  right: 40px;
+		}
+		.unread{
+			line-height: 35px;
+             margin-right: 20px;
+		}
+		</style>
+	</head>
+
+	<body>
+	<header class="mui-bar mui-bar-nav">			
+			<h1 class="mui-title">资讯</h1>
+		</header>
+	<div class="mui-content">			
+	<ul class="mui-table-view " style="margin-top: 0;">
+		
+		<li class="mui-table-view-cell mui-media" id="assistant">
+			<a href="javascript:;" class="mui-navigate-right">
+				<p> <i class="fa fa-map-marker"></i> 随心赚小助理
+				<span class="pull-right unread" id="assistant-unread">
+					<!--<span class="mui-badge mui-badge-warning">10</span>-->
+				</span>
+				</p>
+			</a>
+		</li>
+	<li class="mui-table-view-cell mui-media" id="notify">
+			<a href="javascript:;" class="mui-navigate-right">
+				<p> <i class="fa fa-bell"></i> 系统通知
+				<span class="pull-right unread" id="notify-unread">
+					
+				</span>
+
+				</p>
+			</a>
+		</li>
+		<li class="mui-table-view-cell mui-media" id="message">
+			<a href="javascript:;" class="mui-navigate-right">
+				<p> <i class="fa fa-building"></i> 企业私信
+				<span class="pull-right unread" id="message-unread">
+					<!--<span class="mui-badge mui-badge-danger">10</span>-->
+				</span>
+
+				</p>
+			</a>
+		</li>
+		
+	</ul>
+	
+	
+	
+	</div>	
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/mui.view.js" ></script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+    <script type="text/javascript" src="../../js/lrz.bundle.js" ></script>
+	<script src="../../js/zepto_1.1.3.js"></script>
+	<script>
+		mui.init();
+		
+		//获取用户信息
+			
+			mui.plusReady(function() {
+				
+				checkMessageState();												
+			});
+		
+		window.addEventListener('show',function(){
+			checkMessageState();
+		});
+		
+		function checkMessageState(){
+			//获取用户信息
+			$.ajax({
+				type:"post",
+				url:config.getMessageStateUrl,
+				data:{
+					user:app.getUserState(),
+				},
+				dataType:'json',
+				success:function(rs){
+					if(rs.result=='success'){
+						if(rs.data.unreadSys==0){
+							$('#notify-unread').html('');
+						}else{
+							$('#notify-unread').html('<span class="mui-badge mui-badge-warning">'+rs.data.unreadSys+'</span>');
+						}
+						if(rs.data.unreadEnt==0){
+							$('#message-unread').html('');
+						}else{
+							$('#message-unread').html('<span class="mui-badge mui-badge-warning">'+rs.data.unreadEnt+'</span>');
+						}
+					}
+				},
+				error:function(e){
+					console.log(JSON.stringify(e));
+				}
+			});
+			
+			   
+				
+		}
+		
+		document.getElementById('assistant').addEventListener('tap',function(){
+			
+			mui.openWindow({
+				url:'assistant.html',
+				id:'assistant.html',
+				
+			});
+			
+		});
+		
+		document.getElementById('notify').addEventListener('tap',function(){
+			mui.openWindow({
+				url:'notify.html',
+				id:'notify.html',
+				
+			});
+			
+		});
+		
+		document.getElementById('message').addEventListener('tap',function(){
+			mui.openWindow({
+				url:'ent-msg.html',
+				id:'ent-msg.html',
+			});
+		});
+		
+		
+	
+	</script>
+
+</html>

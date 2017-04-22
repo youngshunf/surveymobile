@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>任务</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+		.dropdown-menu{
+		   	width: 100%;
+		  
+		   	border-radius: 0;
+		   	border:none;
+		   	margin:0;
+		   }
+		   .btn{
+		   	border-radius: 0;
+		   }
+		   .btn-group{
+		   	width: 49%;
+		   }
+		
+		
+			.mui-icon-location{
+				font-size: 16px;
+			}
+			  .panel-white{
+		   	border-bottom: 1px solid #CCCCCC;
+		 
+		   }
+		   span.sub{
+		   	font-size: 12px;
+		   	color: grey;
+		   }
+		</style>
+
+	</head>
+
+	<body>
+	
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<div class="panel-white">
+			<div class="btn-group">
+			<button type="button" class="btn  btn-block  dropdown-toggle" data-toggle="dropdown">
+			<span id="cate-text">全部分类</span> <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li id="all-cate"><a href="#">全部分类</a></li>
+			<li id="survey"><a href="#">调查</a></li>
+			<li id="comment"><a href="#">评论</a></li>
+			<li id="tiyan"><a href="#">体验</a></li>
+			<li id="zhaomu"><a href="#">招募</a></li>
+			
+			</ul>
+			</div>
+			<div class="btn-group">
+			<button type="button" class="btn  btn-block dropdown-toggle" data-toggle="dropdown">
+			<span id="order-text">智能排序</span> <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li id="defalut-order"><a href="#">智能排序</a></li>
+			<li id="pay-order"><a href="#">酬劳最高</a></li>
+			<li id="dist-order"><a href="#">离我最近</a></li>
+			<li id="time-order"><a href="#">最新上线</a></li>
+			</ul>
+			</div>
+			</div>
+		
+		
+			<div id="task-list">
+			<div class="mui-loading">
+				<div class="mui-spinner">
+				</div>
+			</div>	
+		</div>
+				
+		<!--	<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+						<p class="task-title mui-ellipsis">问卷标题</p>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+						<img class="mui-media-object mui-pull-left" src="../../images/logo.png">
+						<div class="mui-media-body">
+							<p class='mui-ellipsis'>奖励:<span class="red">￥20</span>
+								<span class="mui-pull-right">限额: <span class="green">200份</span></span>
+							</p>
+							<p>
+								<a class="mui-badge mui-badge-danger">调查</a>
+								<a class="mui-badge mui-badge-success">宅在家</a>
+								<span class="mui-pull-right sub">20160106</span>
+							</p>
+							<p>
+								<a style="font-size: 12px;"><span class="mui-icon mui-icon-location"></span>地址:北京市海淀区</a>
+								<span class="mui-pull-right sub">距离:300m</span>
+							</p>
+						</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<p class="center">
+						<button class="btn btn-danger get-task"  task_guid=""> 领取任务</a>
+					</p>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+						<p class="task-title mui-ellipsis">问卷标题</p>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../../images/logo.png">
+					<div class="mui-media-body">
+							<p class='mui-ellipsis'><span class="red">￥20</span>
+								<span class="mui-pull-right">限额: <span class="green">200份</span></span>
+							</p>
+							<p>
+								<a class="mui-badge mui-badge-danger">调查</a>
+								<a class="mui-badge mui-badge-success">宅在家</a>
+								<span class="mui-pull-right sub">20160106</span>
+							</p>
+							<p>
+								<a><span class="mui-icon mui-icon-location"></span>地址:北京市海淀区</a>
+							</p>
+						</div>
+					
+				</li>
+				<li class="mui-table-view-cell">
+					<p >
+						<span class="mui-btn mui-btn-success mui-btn-outlined">待提交</span>
+						<button class="btn btn-danger get-task mui-pull-right"  task_guid=""> 领取任务</a>
+					</p>
+				</li>
+			</ul>-->
+			
+		</div>
+		
+		
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>	
+	<script type="text/javascript" src="../../js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js" ></script>
+	<script>
+	var page=1;
+		mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+    
+	    //下拉刷新
+		function pulldownRefresh() {
+			console.log('下拉刷新');			
+			getTaskList('down');
+		}
+		//上拉加载更多
+		function pullupRefresh() {
+			getTaskList('up');
+		}
+		
+		window.addEventListener('refresh-down',function(){	
+			getTaskList('down');
+		});
+		var type=0;
+		var order=0;
+		document.getElementById('all-cate').addEventListener('tap',function(){
+			type=0;
+			$('#cate-text').html('全部分类');
+			getTaskList('down');
+		});
+		
+		document.getElementById('survey').addEventListener('tap',function(){
+			type=1;
+			$('#cate-text').html('调查');
+			getTaskList('down');
+		});
+		
+		document.getElementById('comment').addEventListener('tap',function(){
+			type=2;
+			$('#cate-text').html('评论');
+			getTaskList('down');
+		});
+		
+		document.getElementById('zhaomu').addEventListener('tap',function(){
+			type=3;
+			$('#cate-text').html('招募');
+			getTaskList('down');
+		});
+		
+		document.getElementById('tiyan').addEventListener('tap',function(){
+			type=4;
+			$('#cate-text').html('体验');
+			getTaskList('down');
+		});
+		
+		document.getElementById('defalut-order').addEventListener('tap',function(){
+			order=0;
+			$('#order-text').html('智能排序');
+			getTaskList('down');
+		});
+		
+		document.getElementById('pay-order').addEventListener('tap',function(){
+			order=1;
+			$('#order-text').html('酬劳最高');
+			getTaskList('down');
+		});
+		
+		document.getElementById('dist-order').addEventListener('tap',function(){
+			order=2;
+			$('#order-text').html('离我最近');
+			getTaskList('down');
+		});
+		
+		document.getElementById('time-order').addEventListener('tap',function(){
+			order=3;
+			$('#order-text').html('最新上线');
+			getTaskList('down');
+		});
+		
+		function getTaskList(direction){
+			
+			var user=app.getUserState();
+			if(!user){
+				$('#task-list').html('<p>请下拉刷新</p>');
+				return;
+			}
+			if(direction=='down'){
+				page=1;
+			}			
+			var data={
+				page:page,
+				direction:direction,
+				type:type,
+				order:order,
+				locInfo:app.getLocInfo()
+			};
+			
+			mui.ajax({
+				url:config.getTaskListUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				success:function(rs){
+					closePullRefresh();
+					if(rs=='nodata'){
+						if(direction=='down'){
+							$('#task-list').html('<p>你附近暂时没有可做的任务</p>');
+						}else if(direction=='up'){
+							plus.nativeUI.toast('没有更多任务了!');
+						}
+						
+					}else{
+						page++;
+						if(direction=='down'){
+							$('#task-list').html(rs);
+						}else if(direction=='up'){
+							$('#task-list').append(rs);
+						}
+					}
+				},
+				error:function(e){
+					closePullRefresh();
+					plus.nativeUI.toast('刷新列表失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+		}
+
+		//关闭刷新
+		function closePullRefresh(){			
+		mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); 		
+		mui('#pullrefresh').pullRefresh().endPullupToRefresh(); 	
+			
+		}
+		
+		
+		if (mui.os.plus) {
+				mui.plusReady(function() {
+						type=plus.webview.getWebviewById('task.html');
+					console.log(type);
+						mui('#pullrefresh').pullRefresh().pulldownLoading();
+					
+				
+				});
+			} else {
+				mui.ready(function() {
+					
+					mui('#pullrefresh').pullRefresh().pulldownLoading();
+				});
+		}
+		
+		window.addEventListener('show',function(){
+			
+		});
+		
+
+		mui(document).on('tap','.task-list',function(){
+			var task_guid=$(this).attr('task_guid');
+			mui.openWindow({
+				url:'../task-detail.html',
+				id:'task-detail.html',
+				extras:{
+				task_guid:task_guid
+				}
+			});
+		});
+		
+		
+		
+	</script>
+	<script type="text/javascript" src="../../js/get-task.js" ></script>
+</html>

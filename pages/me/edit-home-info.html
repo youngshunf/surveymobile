@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+	   <link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+	   <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 50px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;	
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.head {
+				height: 60px;
+			}
+			#head {
+				line-height: 60px;
+			}
+			.head-img {
+				width: 60px;
+				height: 60px;
+			
+			}
+			#head-img1{
+				position: absolute;
+				bottom: 10px;right: 40px;
+				width: 40px;height: 40px;
+			}
+			.update{font-style: normal;color: #999999;margin-right: -25px;font-size: 15px}
+			
+			.mui-fullscreen{
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.z-mui-view{
+				height: 500px;
+			}
+			
+	    .mui-table-view .mui-media-object {
+		  line-height: 42px;
+		  max-width: 42px;
+		  height: 42px;
+		}
+			
+		.mui-table-view  .head-img {
+		   line-height: 65px;
+			max-width: 65px;
+		   height: auto;
+		   max-height: 65px;
+		}
+		
+		.mui-icon-gear{
+			color: #19ABF7;
+			font-size: 35px;
+		
+			
+		}
+		.icon-money{
+		  color: #F75C19;
+ 		  font-size: 35px;
+			
+		}
+		.mui-table-view .mui-media-object.mui-pull-left {
+		  margin-right: 20px;
+		}
+	
+		.list-title{
+			color: #000000;
+			font-size: 16px;
+			line-height: 28px;
+			
+		}
+		
+	/*	#list-menu .mui-table-view-cell{
+			padding: 8px 15px;
+		}*/
+		p#nick{
+		
+			color: #000000;
+			font-size: 18px;
+		}
+		.login-text{
+			line-height: 50px;
+			color: blue;
+			font-size: 16px;
+		}
+		span#add-profile{
+			font-size: 16px;
+			color: blue;
+			line-height: 50px;
+		}
+				</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">编辑家庭信息</h1>
+		</header>
+			<div class="mui-content">
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="form-group">
+					<label class="control-label">孩子年龄</label>
+					<select class="form-control" id="childen-age">
+						<option value="3岁以下">3岁以下</option>
+						<option value="3岁(含)-6岁">3岁(含)-6岁</option>
+						<option value="6岁(含)-12岁">6岁(含)-12岁</option>
+						<option value="12岁(含)-18岁">12岁(含)-18岁</option>
+					</select>
+					</div>
+					
+						<div class="form-group">
+					<label class="control-label">家庭月收入(税后)</label>
+					<select class="form-control" id="home-income">
+						<option value="小于500">小于500</option>
+						<option value="500-1000">500-1000</option>
+						<option value="1001-1500">1001-1500</option>
+						<option value="1501-2000">1501-2000</option>
+						<option value="2001-4000">2001-4000</option>
+						<option value="4001-6000">4001-6000</option>
+						<option value="6001-8000">6001-8000</option>
+						<option value="8001-10000">8001-10000</option>
+						<option value="10001-15000">10001-15000</option>
+						<option value="15001-20000">15001-20000</option>
+						<option value="20001-25000">20001-25000</option>
+						<option value="25001-30000">25001-30000</option>
+						<option value="30001及以上">30001及以上</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">自有房产数量</label>
+					<input type="number" class="form-control mui-input-clear"  id="estate" name="estate" placeholder="请输入自有房产数量"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="">私家车数量</label>
+					<input type="number" class="form-control mui-input-clear"  id="car-num" name="car-num" placeholder="请输入私家车数量"/>
+
+					</div>
+					
+	
+					
+					
+					
+					
+				
+				</li>
+				
+				
+				
+						
+				</ul>
+				
+				<div class="panel-white">
+				<button class="mui-btn mui-btn-warning mui-btn-block" id="submit"> 提交</button>
+				</div>
+				
+				
+				</div>
+			
+		
+					
+	
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+    <script type="text/javascript" src="../../js/lrz.bundle.js" ></script>
+	<script src="../../js/zepto_1.1.3.js"></script>
+	<script>
+		mui.init();
+		
+		//获取用户信息
+			
+			mui.plusReady(function() {
+				
+				checkUserState();												
+			});
+		
+		window.addEventListener('show',function(){
+			checkUserState();
+		});
+		
+		function checkUserState(){
+			//获取用户信息
+			    var userInfo=app.getUserInfo();	
+			   
+			    if(userInfo.children_age!=null){
+			    	document.getElementById("childen-age").value=userInfo.children_age;	
+			    }							
+				if(userInfo.home_income!=null){
+					document.getElementById("home-income").value=userInfo.home_income;
+				}
+				if(userInfo.estate!=null){
+					document.getElementById("estate").value=userInfo.estate;
+				}
+							
+				if(userInfo.car_num!=null){
+					document.getElementById("car-num").innerHTML=userInfo.car_num;
+				}
+	
+		}
+		
+		document.getElementById('submit').addEventListener('tap',function(){
+			var children_age=$("#childen-age").val();
+			if(!children_age){
+				alert('请填写孩子年龄');
+				return;
+			}
+			
+			var home_income=$("#home-income").val();
+			if(!home_income){
+				alert('请填写家庭月收入');
+				return;
+			}
+			
+			var estate=$("#estate").val();
+			if(!estate){
+				alert('请填写自有房产数量');
+				return;
+			}
+			
+			var car_num=$('#car-num').val();
+			if(!car_num){
+				alert("请填写私家车数量");
+				return;
+			}
+			var data={
+				children_age:children_age,
+				home_income:home_income,
+				estate:estate,
+				car_num:car_num
+			};
+			
+			plus.nativeUI.showWaiting('正在提交,请稍候...');
+			$.ajax({
+				type:"post",
+				url:config.updateHomeInfoUrl,
+				data:{
+					user:app.getUserState(),
+					data:data
+				},
+				dataType:'json',
+				success:function(rs){
+					plus.nativeUI.closeWaiting();
+					if(rs.result=='success'){
+						localStorage.setItem('$user',JSON.stringify(rs.data));
+						mui.toast('家庭信息提交成功!');
+						var homeInfo=plus.webview.getWebviewById('home-info.html');
+						mui.fire(homeInfo,'show',null);
+						mui.back();
+					}else{
+						console.log(JSON.stringify(rs));
+					   mui.toast('提交失败,请稍后重试..');
+					}
+				},
+				error:function(e){
+					plus.nativeUI.closeWaiting();
+					console.log(JSON.stringify(e));
+					mui.toast('提交失败,请稍后重试..');
+				}
+			});
+		});
+		
+		
+	
+	
+		
+	</script>
+
+</html>

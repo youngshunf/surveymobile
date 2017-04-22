@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>随心赚</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+		<link rel="stylesheet" href="../../css/swiper.min.css" />
+		<style>
+		.swiper-slide img{
+			width: 100%;
+		}
+			.mui-slider-indicator {
+				bottom: 0;
+			}
+			.mui-slider {
+				background-color: #f2f2f2;
+			}
+			.title{
+				font-weight: bold;
+			}
+			.mui-bar .mui-title {
+			  right: 10px; 
+			}
+			.mui-icon-map{
+				line-height: 50px;
+			}
+			.mui-content {
+    			background-color: #FFFFFF;
+   			 }
+   			 .mui-btn, button, input[type=button]{
+   			 	border: 0px;
+   			 	background-color: #EEEDF1;
+   			 }
+   			 .mui-grid-view.mui-grid-9 .mui-media {
+    			color: #ffffff;
+    			}
+
+  		 	.mui-grid-view.mui-grid-9 .mui-table-view-cell img {
+ 				padding: 0px;
+ 				}
+			.mui-grid-view.mui-grid-9,.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			 border-top: 0px ; 		
+			 border-right: 0px; 	
+			 }
+			h5{
+				margin-top: 0px;
+			}
+			.mui-icon {
+				float: right;
+				font-size: 13px;
+				color: #999999;
+			}
+    		.mui-table-view-cell a:hover, a:focus {
+    			color: #999999;
+    		}
+    		.mui-grid-view.mui-grid-9 .mui-table-view-cell.mui-col-xs-6 {
+			  border-right: 1px solid #eee;
+			}
+			b{
+				font-size: 14px;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">		
+			<h1 class="mui-title">随心赚
+			<span class=" mui-pull-right" id="maplist">
+				<img src="../../images/location.png" style="max-width: 20px;margin-top: 12px;"/>
+			</span>
+			</h1>
+		</header>
+		<div class="mui-content">		
+			
+			<div class="swiper-container">
+        <div class="swiper-wrapper" id="slider">
+        	
+          <div class="swiper-slide" >
+          	<img class="img-responsive" src="../../images/top-slide1.png" />
+          	</div>
+          	<div class="swiper-slide" >
+          	<img class="img-responsive" src="../../images/top-slide2.png" />
+          	</div>
+          </div>
+          
+          <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+	</div>
+	<!--	<div class="input-group" style="margin-top: 5px;">
+	         <input type="text" class="form-control" placeholder="搜你所爱">
+	         <span class="input-group-addon"><span class="mui-icon mui-icon-search"></span></span>
+	      </div>-->
+			
+			<div id="Gallery" class="mui-slider" >
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6  ">
+								<a href="#" id="home" class="stay-home">
+									<table>
+										<tr>
+											<td>
+												<div style="text-align: left;">宅在家</div>
+											<div style="font-size: 12px;text-align: left;">足不出户就能赚钱</div>
+											</td>
+											<td>
+												<img src="../../images/home.png" />
+											</td>
+										</tr>
+									</table>
+								
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+								<a href="#" id="run" class="around-run">
+									<table>
+										<tr>
+											<td>
+												<div style="text-align: left;">四处跑</div>
+											<div style="font-size: 12px;text-align: left;">工作机会就在附近</div>
+											</td>
+											<td>
+												<img src="../../images/around-run.png" />
+											</td>
+										</tr>
+									</table>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<a href="#" id="zhaomu">
+									<img src="../../images/zhaomu.png" />
+									<div class="mui-media-body">招募</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<a href="#" id="survey">
+									<img src="../../images/diaocha.png" />
+									<div class="mui-media-body">调查</div>
+								</a>
+							</li>		
+							
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<a href="#" id="more">
+									<img src="../../images/more.png" />
+									<div class="mui-media-body">更多</div>
+								</a>
+							</li>	
+						</ul>
+					</div>
+					
+		
+		
+				</div>	
+			
+			</div>
+			
+			
+			<ul class="mui-table-view" >
+				<li class="mui-table-view-cell" >
+					<h5>为你推荐<a class="mui-icon mui-icon-reload" href="javascript:;" id="refresh">刷新</a> </h5>								
+				</li>
+			</ul>
+			
+			<!--	<ul class="mui-table-view">
+				<li class="mui-media task-list">
+						<img class="mui-media-object mui-pull-left" src="../../images/logo.png">
+						<div class="mui-media-body">
+							<b>问卷标题</b>
+							<p>
+								<span class="sub">限额 : 20</span>
+								<span class="mui-pull-right"> <span class="orange">￥ 15 / 单</span></span>
+							</p>
+							<p>
+								<span class="sub">截止: 2016-1-25</span>
+								<span class="pull-right">
+								</span>
+							</p>
+							<p >
+								<span style="font-size: 12px;">地址:北京市海淀区(300m)</span>
+							</p>
+						</div>
+				</li>
+			</ul>-->
+		
+			<div id="recommend-task" >
+				
+				<div class="mui-loading">
+					<div class="mui-spinner">
+					</div>
+				</div>
+				
+			</div>
+			<p class="center" style="margin-top: 10px;">
+				<button class="mui-btn mui-btn-outlined" id="more-task">更多任务</button>
+			</p>
+			
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js" ></script>
+	<script type="text/javascript" src="../../js/jquery-1.8.3.min.js" ></script>
+	<script>
+		mui.init();
+		mui.ready(function() {
+		var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+   		 });
+		document.getElementById('survey').addEventListener('tap',function(){
+				mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+						extras:{
+							type:1
+						}
+				});
+						//检查登陆,登录之后才能跳转
+		/*	app.checkLogin(function(login){
+					if(login){
+						mui.openWindow({
+						url:'maintain.html',
+						id:'maintain.html',
+						waiting:{
+							autoShow:false
+							}
+						});
+					}
+			});		*/
+	
+		});
+		
+		/*document.getElementById('comment').addEventListener('tap',function(){
+			
+			mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+						extras:{
+							type:2
+						}
+						});
+		});*/
+		
+		//var webview= plus.webview.getWebviewById('illegal.html');
+		
+		document.getElementById('zhaomu').addEventListener('tap',function(){
+			//检查登陆,登录之后才能跳转		
+						mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+						extras:{
+							type:3
+						}
+						});
+				
+	
+		});
+		
+	/*	document.getElementById('tiyan').addEventListener('tap',function(){				
+					mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:4
+								}
+						});
+					
+	
+		});*/
+		
+		/*document.getElementById('newTask').addEventListener('tap',function(){
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:5
+								}
+						});
+		});
+		*/
+		/*document.getElementById('hotTask').addEventListener('tap',function(){
+			//检查登陆,登录之后才能跳转
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:6
+								}
+						});
+		
+	
+		});
+		*/
+		//宅在家
+		document.getElementById('home').addEventListener('tap',function(){		
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:7
+								}
+						});								
+	
+		});
+		//四处跑
+		document.getElementById('run').addEventListener('tap',function(){		
+						mui.openWindow({
+								url:'task.html',
+						id:'task.html',
+								extras:{
+									type:8
+								}
+						});								
+	
+		});
+		
+		document.getElementById('more-task').addEventListener('tap',function(){		
+						mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+								extras:{
+									type:9
+								}
+						});								
+	
+		});
+		
+		document.getElementById('more').addEventListener('tap',function(){		
+						mui.openWindow({
+						url:'task.html',
+						id:'task.html',
+								extras:{
+									type:0
+								}
+						});								
+	
+		});
+		
+		//地图模式
+			document.getElementById('maplist').addEventListener('tap',function(){
+							mui.openWindow({
+							url:'map-list.html',
+							id:'map-list.html',
+							
+							});									
+		
+			 });		
+		});
+		
+		mui(document).on('tap','.task-list',function(){
+			var task_guid=$(this).attr('task_guid');
+			mui.openWindow({
+				url:'../task-detail.html',
+				id:'task-detail.html',
+				extras:{
+				task_guid:task_guid
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+	<script type="text/javascript" src="../../js/home.get-recommond.js" ></script>
+	<script type="text/javascript" src="../../js/get-task.js" ></script>
+	<script type="text/javascript" src="../../js/swiper.min.js" ></script>
+	<script>
+		mui.plusReady(function(){
+			getRecommendList();
+		});
+		
+		window.addEventListener('show',function(){
+			getRecommendList();
+		});
+		
+		document.getElementById('refresh').addEventListener('tap',function(){
+			getRecommendList();
+		});
+	</script>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>车友 圈</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../css/jquery.fancybox.css" />
+		<style>
+			.mui-slider-indicator {
+				bottom: 0;
+			}
+			.mui-slider {
+				background-color: #f2f2f2;
+			}
+			.mui-content>.mui-table-view:first-child {
+			  margin: 0;
+			}
+			.mui-table-view .mui-media-object {
+			  line-height: 42px;
+			  max-width: 42px;
+			  height: 42px;
+			}
+			.mui-bar .mui-icon-camera {
+				line-height: 50px;
+				font-size: 40px;
+			}
+			.mui-bar .mui-title {
+			  right: 15px;
+			  }
+			  
+			.mui-icon-location{
+			  	font-size: 15px;
+			  }
+			 .mui-grid-view.mui-grid-9 .mui-table-view-cell img {
+			  width: 100%;
+			  height: auto;
+			    padding: 0px;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			  padding: 0px;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+			  margin: 0;
+			  padding:  0;
+			}
+			.mui-table-view li{
+				position: relative;
+			   overflow: hidden;
+			   padding: 11px 15px;
+			   background: #FFFFFF;
+			}
+			.mui-table-view li:after {
+			  position: absolute;
+			  right: 0;
+			  bottom: 0;
+			  left: 15px;
+			  height: 1px;
+			  content: '';
+			  -webkit-transform: scaleY(.5);
+			  transform: scaleY(.5);
+			  background-color: #c8c7cc;
+			}
+			
+			.mui-table-view:after,.mui-table-view:before{
+				 background: none;
+			}
+			.mui-btn-block{
+				margin: 0;
+			}
+			
+			.mui-fullscreen{
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			p img{
+				max-width: 100%;
+				height: auto;
+			}
+			.map-container,#map{
+				position: relative;
+				width: 100%;
+				height:100px;
+			}
+			#exit-driving{
+				position: absolute;
+				bottom: 10px;
+				right: 15px;
+				z-index: 9999;
+			}
+			
+			    .mui-col-xs-4 {
+			  width: 32.333333%;
+			}
+			.icon-signin{
+				font-size: 30px;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			  margin: 0px 0 0 2px;			
+			  border: none;			
+			}
+		</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SVLNGzI1VsyomtoL7mB342Ok"></script>
+
+	</head>
+
+	<body>
+
+	<div class="panel-white">
+		<div id="segmentedControl" class="mui-segmented-control" >
+					<a class="mui-control-item mui-active" href="#item1">
+				资讯
+			</a>
+					<a class="mui-control-item" href="#item2">
+				通知
+			</a>
+			
+		</div>		
+	</div>
+	
+		<div id="pullrefreshMessage" class="mui-content mui-scroll-wrapper" >
+			
+			
+			
+				<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../../images/unknown.jpg">
+						<div class="mui-media-body">
+							<a> 李娜</a>
+							<p >你在哪里？</p>
+							<p> <span class="sub pull-right"><i class="icon-time"></i> 2015-12-9</span></p>
+						</div>
+				
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../../images/unknown.jpg">
+						<div class="mui-media-body">
+							<a> 张伟</a>
+							<p >你做了几个任务了？</p>
+							<p> <span class="sub pull-right"><i class="icon-time"></i> 2015-12-9</span></p>
+						</div>
+				
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../../images/unknown.jpg">
+						<div class="mui-media-body">
+							<a> 杜淳</a>
+							<p >可以啊</p>
+							<p> <span class="sub pull-right"><i class="icon-time"></i> 2015-12-9</span></p>
+						</div>
+				
+				</li>
+				</ul>
+			
+			<div class="form-bottom hide " id="form-bottom">
+				<table>
+					<tr>
+						<td width="80%">
+							<div class="mui-input-row">								
+							<input class="mui-input" type="text" placeholder="请输入评论内容" id="comment-content" />
+							<input type="hidden" id="circle_guid" />
+							<input type="hidden" id="refer_user_guid" value="none" />
+							</div>
+							</td>
+						<td>
+							<button class="mui-btn mui-btn-primary" id="submit-comment">发表</button>
+						</td>
+
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>	
+	<script type="text/javascript" src="../../js/jquery-1.8.3.min.js" ></script>
+
+	<script type="text/javascript" src="../../js/jquery.fancybox.js" ></script>
+	<script>
+	mui.init({
+				pullRefresh: {
+					container: '#pullrefreshMessage',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+    
+	    //下拉刷新
+		function pulldownRefresh() {
+			console.log('下拉刷新');			
+			getTaskList('down');
+		}
+		//上拉加载更多
+		function pullupRefresh() {
+			getTaskList('up');
+		}
+		
+		window.addEventListener('refresh-down',function(){	
+			getTaskList('down');
+		});
+		
+		var page=1;
+		function getTaskList(direction){
+			setTimeout(closePullRefresh(),5000);
+		
+		}
+		
+		mui(document).on('tap','.task-list',function(){
+				var task_guid=$(this).find('.do-task').attr('task_guid');			
+				mui.openWindow({
+				url:'task-do.html',
+				id:'task-do.html',
+				extras:{
+					task_guid:task_guid
+				},
+				waiting:{
+					autoShow:false,
+				}
+			});
+		});
+		
+		mui(document).on('tap','.do-task',function(){
+				var task_guid=this.getAttribute('task_guid');			
+				mui.openWindow({
+				url:'confirm-book.html',
+				id:'confirm-book.html',
+				extras:{
+					task_guid:task_guid
+				},
+				waiting:{
+					autoShow:false,
+				}
+			});
+		});
+
+		//关闭刷新
+		function closePullRefresh(){			
+		mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); 		
+		mui('#pullrefresh').pullRefresh().endPullupToRefresh(); 	
+			
+		}
+		
+		
+		if (mui.os.plus) {
+				mui.plusReady(function() {
+					
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pulldownLoading();
+					}, 500);
+
+				});
+			} else {
+				mui.ready(function() {
+					
+					mui('#pullrefresh').pullRefresh().pulldownLoading();
+				});
+		}
+		
+		window.addEventListener('show',function(){
+			
+		});
+	
+	</script>
+	
+</html>

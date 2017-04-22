@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+	   <link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 50px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;	
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.head {
+				height: 60px;
+			}
+			#head {
+				line-height: 60px;
+			}
+			.head-img {
+				width: 60px;
+				height: 60px;
+			
+			}
+			#head-img1{
+				position: absolute;
+				bottom: 10px;right: 40px;
+				width: 40px;height: 40px;
+			}
+			.update{font-style: normal;color: #999999;margin-right: -25px;font-size: 15px}
+			
+			.mui-fullscreen{
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.z-mui-view{
+				height: 500px;
+			}
+			
+	    .mui-table-view .mui-media-object {
+		  line-height: 42px;
+		  max-width: 42px;
+		  height: 42px;
+		}
+			
+		.mui-table-view  .head-img {
+		   line-height: 65px;
+			max-width: 65px;
+		   height: auto;
+		   max-height: 65px;
+		}
+		
+		.mui-icon-gear{
+			color: #19ABF7;
+			font-size: 35px;
+		
+			
+		}
+		.icon-money{
+		  color: #F75C19;
+ 		  font-size: 35px;
+			
+		}
+		.mui-table-view .mui-media-object.mui-pull-left {
+		  margin-right: 20px;
+		}
+	
+		.list-title{
+			color: #000000;
+			font-size: 16px;
+			line-height: 28px;
+			
+		}
+		
+	/*	#list-menu .mui-table-view-cell{
+			padding: 8px 15px;
+		}*/
+		p#nick{
+		
+			color: #000000;
+			font-size: 18px;
+		}
+		.login-text{
+			line-height: 50px;
+			color: blue;
+			font-size: 16px;
+		}
+		span#add-profile{
+			font-size: 16px;
+			color: blue;
+			line-height: 50px;
+		}
+	
+				</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">个人资料</h1>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" id="edit-profile">编辑</button>
+		</header>
+			<div class="mui-content">
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a>姓名<span class="mui-pull-right" id="name"></span></a>
+				</li>
+				
+				
+				<li class="mui-table-view-cell">
+					<a>性别<span class="mui-pull-right" id="sex"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>出生日期<span class="mui-pull-right" id="birthday"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+							<a>身份证号<span class="mui-pull-right" id="identityno"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>手机号<span class="mui-pull-right" id="mobile"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>地址<span class="mui-pull-right" id="address"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>邮箱<span class="mui-pull-right" id="email"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>开户行<span class="mui-pull-right" id="bank_name"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>银行账号<span class="mui-pull-right" id="bank_account"></span></a>
+				</li>
+				<!--<li class="mui-table-view-cell">
+					<a>支付宝<span class="mui-pull-right" id="alipay"></span></a>
+				</li>
+				-->
+				
+						
+				</ul>
+				
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+					<a>婚姻状况<span class="mui-pull-right" id="marital"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>兴趣爱好<span class="mui-pull-right" id="interest"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>备用手机号<span class="mui-pull-right" id="second_mobile"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>籍贯<span class="mui-pull-right" id="homeland"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>微信<span class="mui-pull-right" id="weixin"></span></a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>QQ<span class="mui-pull-right" id="qq"></span></a>
+				</li>
+				
+				</ul>
+				
+				</div>
+			
+		</div>	
+					
+	
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+    <script type="text/javascript" src="../../js/lrz.bundle.js" ></script>
+	<script src="../../js/zepto_1.1.3.js"></script>
+	<script>
+		mui.init();
+		
+		//获取用户信息
+			
+			mui.plusReady(function() {
+				
+				checkUserState();												
+			});
+		
+		window.addEventListener('show',function(){
+			checkUserState();
+		});
+		
+		function checkUserState(){
+			//获取用户信息
+			    var userInfo=app.getUserInfo();	
+			   
+			    if(userInfo.name!=null){
+			    	document.getElementById("name").innerHTML=userInfo.name;	
+			    }							
+				if(userInfo.sex!=null){
+					document.getElementById("sex").innerHTML=userInfo.sex;
+				}
+				if(userInfo.birthday!=null){
+					document.getElementById("birthday").innerHTML=userInfo.birthday;
+				}
+				if(userInfo.identityno!=null){
+					document.getElementById("identityno").innerHTML=userInfo.identityno;
+				}
+				
+				if(userInfo.mobile!=null){
+					document.getElementById("mobile").innerHTML=userInfo.mobile;
+				}
+				
+				
+				if(userInfo.address!=null){
+					document.getElementById("address").innerHTML=userInfo.address;
+				}
+							
+				if(userInfo.email!=null){
+					document.getElementById("email").innerHTML=userInfo.email;
+				}
+				
+				if(userInfo.bank_name!=null){
+					document.getElementById("bank_name").innerHTML=userInfo.bank_name;
+				}
+				
+				if(userInfo.bank_account!=null){
+					document.getElementById("bank_account").innerHTML=userInfo.bank_account;
+				}
+				
+				if(userInfo.marital!=null){
+					document.getElementById("marital").innerHTML=userInfo.marital;
+				}
+				if(userInfo.interest!=null){
+					document.getElementById("interest").innerHTML=userInfo.interest;
+				}
+				if(userInfo.second_mobile!=null){
+					document.getElementById("second_mobile").innerHTML=userInfo.second_mobile;
+				}
+				if(userInfo.homeland!=null){
+					document.getElementById("homeland").innerHTML=userInfo.homeland;
+				}
+				if(userInfo.weixin!=null){
+					document.getElementById("weixin").innerHTML=userInfo.weixin;
+				}
+				if(userInfo.qq!=null){
+					document.getElementById("qq").innerHTML=userInfo.qq;
+				}
+		}
+		
+		document.getElementById('edit-profile').addEventListener('tap',function(){
+			mui.openWindow({
+				url:'edit-profile.html',
+				id:'edit-profile.html'
+			});
+		});
+	
+	
+		
+	</script>
+
+</html>

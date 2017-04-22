@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>任务</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+		.dropdown-menu{
+		   	width: 100%;
+		  
+		   	border-radius: 0;
+		   	border:none;
+		   	margin:0;
+		   }
+		   
+		   .btn{
+		   	border-radius: 0;
+		   }
+		   .btn-group{
+		   	width: 49%;
+		   }
+			ul.mui-table-view{
+				   margin-bottom: 10px;
+			}
+		
+			.mui-icon-location{
+				font-size: 16px;
+			}
+			  .panel-white{
+		   	border-bottom: 1px solid #CCCCCC;
+		 
+		   }
+		   span.sub{
+		   	font-size: 12px;
+		   	color: grey;
+		   }
+		</style>
+
+	</head>
+
+	<body>
+	<div class="panel-white">
+		<div id="segmentedControl" class="mui-segmented-control" >
+			<a class="mui-control-item " href="#" id="allTask">
+							全部任务
+						</a>
+						<a class="mui-control-item" href="#" id="status1">
+							待提交
+						</a>
+						<a class="mui-control-item" href="#" id="status2">
+							待审核
+						</a>
+						<a class="mui-control-item" href="#" id="status3">
+							已通过
+						</a>
+						<a class="mui-control-item" href="#" id="status99">
+							未通过
+						</a>
+			
+		</div>		
+	</div>
+		<div id="pullrefresh2" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+		
+			<div id="task-list">
+				<div class="mui-loading">
+					<div class="mui-spinner">
+					</div>
+				</div>	
+			</div>
+				
+			
+
+			</div>
+		
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>	
+	<script type="text/javascript" src="../../js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js" ></script>
+	<script>
+	var page=1;
+	var status=100;
+		mui.init({
+				pullRefresh: {
+					container: '#pullrefresh2',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+    
+	    //下拉刷新
+		function pulldownRefresh() {
+			console.log('下拉刷新');			
+			getMyTask('down');
+		}
+		//上拉加载更多
+		function pullupRefresh() {
+			getMyTask('up');
+		}
+		
+		window.addEventListener('refresh-down',function(){	
+			getMyTask('down');
+		});
+		
+		document.getElementById('allTask').addEventListener('tap',function(){
+			status=100;
+			getMyTask('down');
+		});
+		
+		document.getElementById('status1').addEventListener('tap',function(){
+			status=1;
+			getMyTask('down');
+		});
+		
+		document.getElementById('status2').addEventListener('tap',function(){
+			status=2;
+			getMyTask('down');
+		});
+		
+		document.getElementById('status3').addEventListener('tap',function(){
+			status=3;
+			
+			getMyTask('down');
+		});
+		
+		document.getElementById('status99').addEventListener('tap',function(){
+			status=99;
+			getMyTask('down');
+		});
+		
+		function getMyTask(direction){
+			
+			var user=app.getUserState();
+			if(JSON.stringify(user)=='{}'){
+				$('#task-list').html('<p>请下拉刷新</p>');
+				return;
+			}
+			if(direction=='down'){
+				page=1;
+			}
+			var data={
+				page:page,
+				direction:direction,
+				status:status,
+				locInfo:app.getLocInfo()
+			};
+			
+			mui.ajax({
+				url:config.getMyTaskUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				success:function(rs){
+					closePullRefresh();
+					if(rs=='nodata'){
+						if(direction=='down'){
+							$('#task-list').html('<p>暂时没有任务哦!</p>');
+						}else if(direction=='up'){
+							plus.nativeUI.toast('没有更多任务了!');
+						}
+						
+					}else{
+						page++;
+						if(direction=='down'){
+							$('#task-list').html(rs);
+						}else if(direction=='up'){
+							$('#task-list').append(rs);
+						}
+					}
+				},
+				error:function(e){
+					closePullRefresh();
+					plus.nativeUI.toast('刷新列表失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+		}
+			
+			mui(document).on('tap','.do-task',function(){
+				var task_guid=this.getAttribute('task_guid');
+				var answer_guid=this.getAttribute('answer_guid');
+				console.log(answer_guid);
+				mui.openWindow({
+				url:'../task-do.html',
+				id:'task-do.html',
+				extras:{
+					task_guid:task_guid,
+					answer_guid:answer_guid
+				},
+				waiting:{
+					autoShow:false,
+				}
+			});
+		});
+			
+
+		//关闭刷新
+		function closePullRefresh(){			
+		mui('#pullrefresh2').pullRefresh().endPulldownToRefresh(); 		
+		mui('#pullrefresh2').pullRefresh().endPullupToRefresh(); 	
+			
+		}
+		
+		
+		
+				mui.plusReady(function() {
+					var task=plus.webview.getWebviewById('my-task.html');
+					status=task.status;
+					console.log(status);
+					if(status==100){
+						status=100;
+						$(".mui-control-item").removeClass('mui-active');
+						$('#allTask').addClass('mui-active');
+					}
+					if(status==1){
+						status=1;
+						$(".mui-control-item").removeClass('mui-active');
+						$('#status1').addClass('mui-active');
+					}
+					if(status==2){
+						status=2;
+						$(".mui-control-item").removeClass('mui-active');
+						$('#status2').addClass('mui-active');
+					}
+					if(status==3){
+						status=3;
+						$(".mui-control-item").removeClass('mui-active');
+						$('#status3').addClass('mui-active');
+					}
+					if(status==99){
+						status=99;
+						$(".mui-control-item").removeClass('mui-active');
+						$('#status99').addClass('mui-active');
+					}
+					  pulldownRefresh();
+				});
+		
+		
+		window.addEventListener('show',function(){
+			getMyTask('down');
+		});
+		
+
+		mui(document).on('tap','.task-list',function(){
+			var task_guid=$(this).attr('task_guid');
+			mui.openWindow({
+				url:'../task-detail.html',
+				id:'task-detail.html',
+				extras:{
+				task_guid:task_guid
+				}
+			});
+		});
+		
+		//删除
+		mui(document).on('tap','.del-answer',function(){
+			var answerid=$(this).attr('answerid');
+			console.log('answerid:'+answerid);
+			var user=app.getUserState();
+			var data={
+				answerid:answerid,
+			};
+			plus.nativeUI.showWaiting('正在删除，请稍候...');
+			mui.ajax({
+				url:config.delAnswerUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				dataType:'json',
+				success:function(rs){
+					console.log(JSON.stringify(rs));
+					plus.nativeUI.closeWaiting();
+				   if(rs.result=='success'){
+				   	  plus.nativeUI.toast('删除成功!');
+				   	  getMyTask('down');
+				   }else{
+				   	plus.nativeUI.toast('删除失败!');
+				   }
+					
+				},
+				error:function(e){
+					plus.nativeUI.closeWaiting();
+					plus.nativeUI.toast('删除失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+		});
+		
+		
+		
+		
+	</script>
+	<script type="text/javascript" src="../../js/get-task.js" ></script>
+</html>

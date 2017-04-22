@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的钱包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+	   <link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<style>
+			.head{
+				text-align: center;
+			}
+			.head img{
+				  width: 90px;
+				  height: auto;
+				  padding: 10px;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+			  margin: 0;
+			  padding: 5px 0;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			  padding: 0px 5px;
+			}
+		
+			ul.head-info{
+				background: rgb(255, 144, 27);
+				background-size: 100% 100%;
+			}
+			.mui-table-view li {
+				background: none;
+			}
+			.mui-grid-view.mui-grid-9 {
+				background: none;
+				}
+			.with-draw{
+				background: rgb(224, 228, 234) !important;
+				  /*box-shadow: 0 0 5px #687C8B;*/
+			}
+			.mui-table-view-cell .mui-media{
+				color: #FFF !important;
+				
+			}
+			.wallet{
+				padding-left: 20px;
+			}
+			.wallet p,.head p{
+				color: #FFFFFF;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border-top:none;	
+			}
+			.mui-table-view:after{
+				background: none;
+			}
+			.circle {
+		  width: 40px;
+		  height: 40px;
+		  border-radius: 20px;
+		  line-height: 40px;
+		}
+		
+		.red-info {
+		  border: 1px solid rgb(255, 3, 3);
+		  color: rgb(255, 0, 0);
+		  font-size: 18px;
+		  }
+		 .blue-info {
+		  border: 1px solid rgb(10, 10, 202);
+		  color: rgb(10, 10, 202);
+		  font-size: 18px;
+		  font-weight: normal;
+		  }
+		  
+		  .green-info {
+		  border: 1px solid rgb(17, 200, 26);
+		  color: rgb(17, 200, 26);
+		  font-size: 18px;
+		  font-weight: normal;
+		}
+		.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+			border-bottom: none;
+			border-left: 1px solid #CCCCCC;
+			}
+		.mui-grid-view.mui-grid-9 .mui-table-view-cell:first-child {
+			border-bottom: none;
+			border-left:none;
+			}
+		.money{
+			padding: 10px;
+			font-size: 35px;
+			font-weight: bold;
+		}
+		</style>
+	</head>
+
+	<body>
+	<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的钱包</h1>
+		</header>
+	<div class="mui-content">			
+	<ul class="mui-table-view head-info " style="margin-top: 0;">
+		
+	<li class="mui-table-view-cell mui-media" id="user-info">
+			
+		<div class="wallet">
+			<p  class="name">可提现金额 ( 元 )</p>
+			<p  class="money" id='non-payment'>0.00</p>
+		</div>
+			
+		</li>
+		
+	</ul>
+	
+	<ul class="mui-table-view " >
+		<li class="mui-table-view-cell ">
+		<ul class="mui-table-view mui-grid-view mui-grid-9">
+				
+							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+									<a href="#"  >
+								<div class="mui-media-body orange">提现中</div>
+									<p id="withdrawing">0</p>
+								</a>
+							</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+									<a href="#"  >
+									<div class="mui-media-body orange">已提现</div>
+									<p id="paid">0</p>
+								</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+								<a href="#"  >
+									<div class="mui-media-body orange">累计金额</div>
+									<p id="total-income">0</p>
+								</a>
+							</li>
+						
+						</ul>	
+		</li>
+	
+	</ul>
+	
+	<ul class="mui-table-view"  style="margin-top: 5px;">
+		<li class="mui-table-view-cell" id="with-draw">
+			<a class="mui-navigate-right">
+				支付宝提现
+				<span class="mui-pull-right" style="margin-right: 15px;" id="alipay-info"></span>
+			</a>
+		</li>
+		
+	</ul>
+	</div>	
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+	<script src="../../js/zepto_1.1.3.js"></script>
+	<script>
+		mui.init();
+		
+			mui.plusReady(function() {
+				checkWalletState();												
+			});
+		
+		window.addEventListener('show',function(){
+			checkWalletState();
+		});
+		
+		function checkWalletState(){
+			var user=app.getUserInfo();
+			if(user.alipay){
+			$('#alipay-info').html(user.alipay);	
+			}
+			//更新钱包信息
+			$.ajax({
+				type:"post",
+				url:config.getWalletUrl,
+				data:{
+					user:app.getUserState()
+				},
+				dataType:'json',
+				success:function(rs){
+					if(rs.result=='success'){
+						if(rs.data=='nodata'){
+							return ;
+						}else{
+							plus.storage.setItem('$wallet',JSON.stringify(rs.data));
+							$('#non-payment').html(rs.data.non_payment);
+							$('#withdrawing').html(rs.data.withdrawing);
+							$('#paid').html(rs.data.paid);
+							$('#total-income').html(rs.data.total_income);
+						}
+					}
+				},
+				error:function(e){
+					console.log(JSON.stringify(e));
+					
+				},
+			});
+				
+		}
+		
+	document.getElementById('with-draw').addEventListener('tap',function(){
+			var user=app.getUserInfo();
+			console.log(user.alipay);
+			if(user.alipay==null||user.alipay==''){
+				mui.openWindow({
+				url:'edit-alipay.html',
+				id:'edit-alipay.html',
+				extras:{
+					type:2
+				}
+			});
+			}else{
+				mui.openWindow({
+				url:'with-draw.html',
+				id:'with-draw.html',
+				extras:{
+					type:2
+				}
+			});
+			}
+			
+		});
+		
+	</script>
+
+</html>

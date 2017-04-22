@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+		html,body{
+			background: #F9F9F9;
+		}
+		.mui-content{
+			background: none;
+			padding-top: 20px;
+		}
+		
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			.mui-input-group label {
+				width: 22%;
+			}
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			.mui-btn {
+				padding: 10px;
+			}
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.mui-input-group .mui-input-row {
+				  height: 50px;
+				  padding-left: 20px;
+				}
+			label {
+			
+			  color: ##000;
+			}
+			.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea {
+			  width: 70%;
+			   height: 50px;
+			  padding: 18px 15px;
+			}
+			.login-form{
+				margin-top: 30px;
+			}
+			.top-logo{
+				text-align: center;				
+			}
+			.top-logo p{
+				font-size: 20px;
+				color: rgb(2,136,203);
+			}
+			.top-logo img{
+				max-width: 120px;
+				margin-bottom: 10px;
+			}
+			span.label{
+				color: rgb(239,130,0);
+				font-size: 20px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		
+		<div class="mui-content">
+			<div class="top-logo">
+				<img src="images/logo.png" />
+				<p> <span class="label">随心赚</span></p>
+			</div>
+			<div class="mui-content-padded login-form">
+				
+			
+			<form id='login-form' >
+				<div class="form-group">
+					<label class="label-control">手机号</label>
+					<input type="text" id='mobile'  class="form-control" placeholder="请输入手机号" />
+				</div>
+			
+				<div class="form-group">
+					<label class="label-control">密 &nbsp;&nbsp;&nbsp;码</label>
+					<input id='password' type="password" class="form-control" placeholder="请输入密码">
+				</div>
+			</form>
+
+			<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block  mui-btn-warning">登录</button>
+				<div class="link-area"><a id='reg'>注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				</div>
+			</div>	
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.enterfocus.js"></script>
+		<script src="js/app.js"></script>
+		<script type="text/javascript" src="js/config.js" ></script>
+		<script>
+			(function($, doc) {
+				$.init({
+					statusBarBackground: '#FF901B'
+				});
+				$.plusReady(function() {
+					//关闭 splash
+					plus.navigator.closeSplashscreen();
+					
+					var backButtonPress = 0;
+					mui.back = function(event) {
+						backButtonPress++;
+						if (backButtonPress > 1) {
+							plus.runtime.quit();
+						} else {
+							plus.nativeUI.toast('再按一次退出应用');
+						}
+						setTimeout(function() {
+							backButtonPress = 0;
+						}, 1000);
+						return false;
+					};
+															
+					var toMain = function() {									
+							$.openWindow({
+								id: 'main',
+						        url: 'main.html',
+								show: {
+									aniShow: 'pop-in'
+								},
+								waiting: {
+									autoShow: false
+								}
+							});
+						
+					};
+							
+					//检查 "登录状态" 结束
+					var loginButton = doc.getElementById('login');
+					var mobileBox = doc.getElementById('mobile');
+					var passwordBox = doc.getElementById('password');
+					var autoLoginButton = doc.getElementById("autoLogin");
+					var regButton = doc.getElementById('reg');
+					var forgetButton = doc.getElementById('forgetPassword');
+					loginButton.addEventListener('tap', function(event) {
+						login();
+					});
+					
+					function login(){
+						
+						var mobile=mobileBox.value;
+						if(!mobile){
+							plus.nativeUI.toast('请输入用户名或手机号!');
+							console.log('请输入手机号!');
+							return;
+						}
+						var password=passwordBox.value;
+						if(password.length<6){
+							plus.nativeUI.toast('手机号码不能少于6位!');
+							console.log('手机号码不能少于6位!');
+							return;
+						}
+						var loginInfo = {
+							mobile: mobile,
+							password: password,
+							locInfo:app.getLocInfo()
+						};
+						plus.nativeUI.showWaiting('正在登录,请稍候...');
+						$.ajax({
+							type:"post",
+							url:config.loginUrl,
+							async:false,
+							data:{
+								data:loginInfo
+							},
+							success:function(rs){
+								console.log('登录返回数据:'+rs);
+								rs=JSON.parse(rs);
+								if(rs.result=='success'){
+									localStorage.setItem('$user',JSON.stringify(rs.data));
+									plus.nativeUI.closeWaiting();
+									plus.nativeUI.toast('登录成功!');
+									console.log('登录成功!');							
+									toMain();
+								}else if(rs.result=='error'){
+									plus.nativeUI.closeWaiting();
+									plus.nativeUI.toast('登录失败,用户名或密码错误!');
+									console.log('登录失败,用户名或密码错误!');
+								}
+							},
+							error:function(e){
+								plus.nativeUI.closeWaiting();
+								plus.nativeUI.toast('登录失败:请检查网络!');
+								console.log('登录失败:请检查网络!');
+							}
+							
+						});					
+					}
+					
+					$.enterfocus('#login-form input', function() {
+						$.trigger(loginButton, 'tap');
+					});
+				
+					regButton.addEventListener('tap', function(event) {
+						$.openWindow({
+							url: 'reg.html',
+							id: 'reg',
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					}, false);
+					forgetButton.addEventListener('tap', function(event) {
+						$.openWindow({
+							url: 'forget_password.html',
+							id: 'forget_password',
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					}, false);
+				
+					
+				
+				});
+			}(mui, document));
+			
+			
+		</script>
+	</body>
+
+</html>

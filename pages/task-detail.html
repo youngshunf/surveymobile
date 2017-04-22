@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>任务详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" href="../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<style>
+		
+			
+			.mui-table-view li img{
+				
+			}  
+		
+			.mui-table-view li{
+				position: relative;
+			   overflow: hidden;
+			
+			   background: #FFFFFF;
+			
+			}
+			ul.mui-table-view{
+				   margin-bottom: 5px;
+			}
+			.mui-content>.mui-table-view:first-child {
+			margin-top: 0;	
+			}
+		
+			.mui-icon-location{
+				font-size: 16px;
+			}
+			
+		
+		
+		</style>
+
+	</head>
+
+	<body>
+	<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">任务详情</h1>
+		</header>
+		<div class="mui-content">
+				<div id="task-info">	
+					<div class="mui-loading">
+				<div class="mui-spinner">
+				</div>
+			</div>	
+				<!--<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷1</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p style="padding-top: 8px;">奖励:<span class="red">￥ 1.00</span></p>
+							<p>限额:<span class="green"> 100份</span></p>
+							
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span></p>
+						   
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					 <p class="center"><a class="btn btn-danger get-task"  > 领取任务</a>					 					 	
+					 </p>
+				</li>
+				</ul>-->
+				
+				</div>		
+				
+				<!--<ul class="mui-table-view" style="margin-bottom: 0;" >
+				<li class="mui-table-view-cell">
+					<p> 讨论 <a class="mui-btn mui-btn-success pull-right"> 发表</a></p>
+				</li>
+				</ul>
+				<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../images/user-photo.png">
+						<div class="mui-media-body">
+							<a> 张伟</a>
+							<p >这个任务很好做</p>
+							<p> <span class="sub pull-right"><i class="icon-time"></i> 2015-12-9</span></p>
+						</div>
+				
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../images/user-photo.png">
+						<div class="mui-media-body">
+							<a> 张伟</a>
+							<p >这个任务很好做</p>
+							<p> <span class="sub pull-right"><i class="icon-time"></i> 2015-12-9</span></p>
+						</div>
+				
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					
+						<img class="mui-media-object mui-pull-left" src="../images/user-photo.png">
+						<div class="mui-media-body">
+							<a> 张伟</a>
+							<p >这个任务很好做</p>
+							<p> <span class="sub pull-right"><i class="icon-time"></i> 2015-12-9</span></p>
+						</div>
+				
+				</li>
+				</ul>-->
+				
+
+			</div>
+		
+</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/config.js"></script>	
+	<script type="text/javascript" src="../js/jquery-2.1.0.js" ></script>
+
+	<script>
+	mui.init();
+	mui.plusReady(function(){
+		var self=plus.webview.currentWebview();
+		var task_guid=self.task_guid;
+		if(!task_guid){
+			task_guid=app.getUrlParam('task_guid');
+		}
+		getTaskInfo(task_guid);
+		
+	});
+		
+	function getTaskInfo(task_guid){
+		var user=app.getUserState();
+			var data={
+				task_guid:task_guid,						
+				locInfo:app.getLocInfo()
+			};
+			
+			mui.ajax({
+				url:config.getTaskInfoUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				success:function(rs){
+					
+					$('#task-info').html(rs);
+						
+					
+					
+				},
+				error:function(e){
+					$('#task-info').html('<p>获取任务信息失败!</p>');
+					plus.nativeUI.toast('获取任务信息失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+	}
+	
+		mui(document).on('tap','.do-task',function(){
+				var task_guid=this.getAttribute('task_guid');			
+				mui.openWindow({
+				url:'me/my-task.html',
+				id:'my-task.html',
+				extras:{
+					status:1
+				},
+				waiting:{
+					autoShow:false,
+				}
+			});
+		});
+	
+	</script>
+	<script type="text/javascript" src="../js/get-task.js" ></script>
+</html>

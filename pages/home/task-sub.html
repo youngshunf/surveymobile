@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>任务</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../../css/style.css" />
+		<link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+		.dropdown-menu{
+		   	width: 100%;
+		   	border-radius: 0;
+		   	border:none;
+		   	margin:0;
+		   }
+		   
+		   .btn{
+		   	border-radius: 0;
+		   }
+		   .btn-group{
+		   	width: 49%;
+		   }
+			.mui-table-view li{
+				position: relative;
+			   overflow: hidden;
+			   padding: 5px 10px;
+			   background: #FFFFFF;
+			}
+		
+			.mui-icon-location{
+				font-size: 16px;
+			}
+			  .panel-white{
+		   	border-bottom: 1px solid #CCCCCC;
+		 
+		   }
+		   input.form-control{
+				height: 35px;
+				border:none;
+				font-size: 12px;
+				line-height: 13px;
+			}
+			
+			.input-group-addon {
+   				 padding: 3px 12px;
+   				 background-color: #E3E3E3;
+   				 border:none;
+   				 }
+   			.input-group {
+   			padding: 0 0 0 2px;
+   			}
+		</style>
+
+	</head>
+
+	<body>
+	
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="panel-white">
+		<div class="searh-bar">
+			<div class="input-group">
+	         <input type="text" id="keyword" class="form-control" placeholder="输入关键词搜索">
+	         <span class="input-group-addon" id="search"><span class="mui-icon mui-icon-search"></span></span>
+	   		 </div>
+	   	</div>
+			<div class="btn-group">
+			<button type="button" class="btn  btn-block  dropdown-toggle" data-toggle="dropdown">
+			<span id="cate-text">全部分类</span> <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li id="all-cate"><a href="#">全部分类</a></li>
+			<li id="survey"><a href="#">调查</a></li>
+			<li id="zhaomu"><a href="#">招募</a></li>
+			<li id="zhaizaijia"><a href="#">宅在家</a></li>
+			<li id="sichupao"><a href="#">四处跑</a></li>
+			
+			</ul>
+			</div>
+			<div class="btn-group">
+			<button type="button" class="btn  btn-block dropdown-toggle" data-toggle="dropdown">
+			<span id="order-text">智能排序</span> <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+			<li id="defalut-order"><a href="#">智能排序</a></li>
+			<li id="pay-order"><a href="#">酬劳最高</a></li>
+			<li id="dist-order"><a href="#">离我最近</a></li>
+			<li id="time-order"><a href="#">最新上线</a></li>
+			</ul>
+			</div>
+	</div>
+			<div id="task-list">
+			<div class="mui-loading">
+				<div class="mui-spinner">
+				</div>
+			</div>				
+			
+				<!--<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷1</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p >奖励:<span class="mui-badge mui-badge-danger">￥1.00</span></p>
+							<p>限额:<span class="green"> 100份</span></p>
+							<p>距离:<span class="blue"> 100m</span></p>
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span></p>
+						    <p class="center"><a class="btn btn-danger"> 领取任务</a></p>
+						</div>
+					</div>
+				</li>
+				</ul>
+				<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷2</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p >奖励:<span class="mui-badge mui-badge-danger">￥1.00</span></p>
+							<p>限额:<span class="green"> 200份</span></p>
+							<p>距离:<span class="blue"> 300m</span></p>
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span></p>
+			                 <p class="center"><a class="btn btn-danger"> 领取任务</a></p>
+						</div>
+					</div>
+				</li>
+				</ul>
+				<ul class="mui-table-view" >
+				<li class="mui-table-view-cell">
+					<div class="row">
+						<div class="col-xs-8">
+							<p class="task-title">调研问卷3调研问卷3调研问卷3</p>	
+							<p class="sub">发布:2015-12-8</p>
+							<p class="sub">截止:2015-12-20</p>
+						</div>
+						<div class="col-xs-4">
+							<p>奖励:<span class="mui-badge mui-badge-danger">￥3.00</span></p>
+							<p>限额:<span class="green"> 300份</span></p>
+							<p>距离:<span class="blue"> 500m</span></p>
+						</div>
+						<div class="col-xs-12">
+						
+							<div class="progress">
+			               <div class="progress-bar progress-bar-danger" role="progressbar" 
+			                  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+			                  style="width: 10%;">		            
+			               </div>
+			                </div>
+			                <p>
+			                <span class="mui-icon mui-icon-location sub"> 北京市海淀区观澳园 </span>
+			                <span class="pull-right"><span class="red">10</span> / 100</span></p>
+			                 <p class="center"><a class="btn btn-danger"> 领取任务</a></p>
+						</div>
+					</div>
+				</li>
+				</ul>-->
+
+			</div>
+			</div>
+		
+		</div>
+	</body>
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js"></script>	
+	<script type="text/javascript" src="../../js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../js/bootstrap.min.js" ></script>
+	<script>
+	var page=1;
+	var type=0;
+	var order=0;
+	var keyword="";
+		mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+    
+	    //下拉刷新
+		function pulldownRefresh() {
+			console.log('下拉刷新');			
+			getTaskList('down');
+		}
+		//上拉加载更多
+		function pullupRefresh() {
+			getTaskList('up');
+		}
+		
+		window.addEventListener('refresh-down',function(){	
+			getTaskList('down');
+		});
+		
+		document.getElementById('all-cate').addEventListener('tap',function(){
+			type=0;
+			$('#cate-text').html('全部分类');
+			getTaskList('down');
+		});
+		
+		document.getElementById('survey').addEventListener('tap',function(){
+			type=1;
+			$('#cate-text').html('调查');
+			getTaskList('down');
+		});
+		
+		document.getElementById('zhaizaijia').addEventListener('tap',function(){
+			type=7;
+			$('#cate-text').html('宅在家');
+			getTaskList('down');
+		});
+		
+		document.getElementById('zhaomu').addEventListener('tap',function(){
+			type=3;
+			$('#cate-text').html('招募');
+			getTaskList('down');
+		});
+		
+		document.getElementById('sichupao').addEventListener('tap',function(){
+			type=8;
+			$('#cate-text').html('四处跑');
+			getTaskList('down');
+		});
+		
+		document.getElementById('defalut-order').addEventListener('tap',function(){
+			order=0;
+			$('#order-text').html('智能排序');
+			getTaskList('down');
+		});
+		
+		document.getElementById('pay-order').addEventListener('tap',function(){
+			order=1;
+			$('#order-text').html('酬劳最高');
+			getTaskList('down');
+		});
+		
+		document.getElementById('dist-order').addEventListener('tap',function(){
+			order=2;
+			$('#order-text').html('离我最近');
+			getTaskList('down');
+		});
+		
+		document.getElementById('time-order').addEventListener('tap',function(){
+			order=3;
+			$('#order-text').html('最新上线');
+			getTaskList('down');
+		});
+		
+		document.getElementById('search').addEventListener('tap',function(){
+			if($('#keyword').val()){
+				keyword=$('#keyword').val();
+			}
+			plus.nativeUI.showWaiting('正在搜索,请稍候...');
+			pulldownRefresh();
+		});
+		
+		function getTaskList(direction){
+			
+			
+			var user=app.getUserState();
+			if(!user){
+				$('#task-list').html('<p>请下拉刷新</p>');
+				return;
+			}
+			if(direction=='down'){
+				page=1;
+			}			
+			var data={
+				page:page,
+				direction:direction,
+				type:type,
+				keyword:keyword,
+				locInfo:app.getLocInfo()
+			};
+			
+			mui.ajax({
+				url:config.getTaskListUrl,
+				type:"post",
+				data:{
+					user:user,
+					data:data
+				},
+				success:function(rs){
+					plus.nativeUI.closeWaiting();
+					closePullRefresh();
+					if(rs=='nodata'){
+						if(direction=='down'){
+							$('#task-list').html('<p>你附近暂时没有可做的任务</p>');
+						}else if(direction=='up'){
+							plus.nativeUI.toast('没有更多任务了!');
+						}
+						
+					}else{
+						page++;
+						if(direction=='down'){
+							$('#task-list').html(rs);
+						}else if(direction=='up'){
+							$('#task-list').append(rs);
+						}
+					}
+				},
+				error:function(e){
+					plus.nativeUI.closeWaiting();
+					closePullRefresh();
+					plus.nativeUI.toast('刷新列表失败!');
+					console.log(JSON.stringify(e));
+				}
+			});
+			
+		
+		}
+		
+		
+
+
+		//关闭刷新
+		function closePullRefresh(){			
+		mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); 		
+		mui('#pullrefresh').pullRefresh().endPullupToRefresh(); 	
+			
+		}
+		
+		
+		if (mui.os.plus) {
+				mui.plusReady(function() {
+					var self=plus.webview.getWebviewById('task.html');
+						type=self.type;
+						console.log(type);
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pulldownLoading();
+					}, 500);
+
+				});
+			} else {
+				mui.ready(function() {
+					
+					mui('#pullrefresh').pullRefresh().pulldownLoading();
+				});
+		}
+		
+		window.addEventListener('show',function(){
+			
+		});
+		
+
+		mui(document).on('tap','.task-list',function(){
+			var task_guid=$(this).attr('task_guid');
+			mui.openWindow({
+				url:'../task-detail.html',
+				id:'task-detail.html',
+				extras:{
+				task_guid:task_guid
+				}
+			});
+		});
+		
+		
+		
+	</script>
+	<script type="text/javascript" src="../../js/get-task.js" ></script>
+</html>

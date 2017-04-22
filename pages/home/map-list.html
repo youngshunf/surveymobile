@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%; margin:0;font-family:"微软雅黑";}
+		#l-map{height:100%;width:100%;}
+		.mui-content {
+		     padding-bottom: 0px !important;
+		}
+		.mui-table-view .mui-table-view-cell{
+			padding: 3px !important;
+		}
+	</style>
+	<link rel="stylesheet" href="../../css/mui.min.css" />
+	<link rel="stylesheet" href="../../css/style.css" />	
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SVLNGzI1VsyomtoL7mB342Ok"></script>
+	<script>
+//		 function openTask(task_guid){
+//		  	console.log(task_guid);
+//			    mui.openWindow({
+//							url:'../task-detail.html',
+//							id:'task-detail.html',
+//							extras:{
+//							task_guid:task_guid,
+//							}
+//						});
+//		  }
+	</script>
+	<title>地图模式</title>
+</head>
+<body>
+		<header class="mui-bar mui-bar-nav">	
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">地图模式</h1>
+		</header>
+		<div class="mui-content">	
+	<div id="l-map"></div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="../../js/mui.min.js" ></script>
+<script type="text/javascript" src="../../js/jquery-2.1.0.js" ></script>
+<script type="text/javascript" src="../../js/app.js" ></script>
+<script type="text/javascript" src="../../js/config.js" ></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("l-map");            // 创建Map实例
+	mui.plusReady(function(){
+	var loc=app.getLocInfo();
+	map.centerAndZoom(new BMap.Point(loc.lng, loc.lat), 12);//设置当前位置为中心点
+	var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});
+	var top_left_navigation = new BMap.NavigationControl(); 
+	map.addControl(top_left_control);
+	map.addControl(top_left_navigation); 
+	getMapTask();
+	});
+	
+			var opts = {
+					width : 300,     // 信息窗口宽度
+					height: 150,     // 信息窗口高度
+//								title : "信息窗口" , // 信息窗口标题
+//								enableMessage:true//设置允许信息窗发送短息
+			   };
+  function getMapTask(){
+		var data={
+			
+			locInfo:app.getLocInfo()
+		};
+		
+		mui.ajax({
+			type:"post",
+			url:config.getMapTaskListUrl,
+			data:{
+				user:app.getUserInfo(),
+				data:data
+			},
+			dataType:'json',
+			success:function(rs){
+				console.log(JSON.stringify(rs));
+				if(rs.result=="success"){
+					var data_info = rs.data;
+
+					for(var i=0;i<data_info.length;i++){
+						var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+						var content = data_info[i][2];
+						map.addOverlay(marker);               // 将标注添加到地图中
+						addClickHandler(content,marker);
+					}
+				}
+			},
+			error:function(e){
+				console.log(JSON.stringify(e));
+			}
+					
+		})
+	}
+	
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+		
+	}
+
+ 
+
+		
+</script>
+

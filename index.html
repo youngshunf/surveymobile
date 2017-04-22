@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>随心赚</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+
+	<body style="max-height: 100%;background: #12466e;">
+		<div  style="max-width: 100%;height: 100%;overflow: hidden;" >
+			<img src="images/lanucher.png" style="max-width: 100%;" />
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/config.js" ></script>
+		<script type="text/javascript" src="js/app.js" ></script>
+		
+		<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/init.js" ></script>
+		<script>			
+			mui.init({
+					statusBarBackground: '#FF901B'
+				});
+			mui.plusReady(function() {
+				
+					var mainPage = mui.preload({
+						"id": 'main',
+						"url": 'main.html'
+					});
+					var toMain = function() {
+						
+							mui.openWindow({
+								id: 'main',			
+								show: {
+									aniShow: 'pop-in'
+								},
+								waiting: {
+									autoShow: false
+								}
+								});
+							//closeSplash();
+					};
+					
+					var loginPage = mui.preload({
+						"id": 'login',
+						"url": 'login.html'
+					});
+					var toLogin = function() {
+						
+							mui.openWindow({
+								id: 'login',			
+								show: {
+									aniShow: 'pop-in'
+								},
+								waiting: {
+									autoShow: false
+								}
+								});
+								
+							//closeSplash();
+								
+					};
+								
+						var user=app.getUserState();
+						var locInfo=app.getLocInfo();
+						var data={
+							locInfo:locInfo
+						};
+						console.log(JSON.stringify(user));
+						if(user){
+							//用户已登录,自动登录
+							mui.ajax({
+								url:config.autoLoginUrl,
+								type:'post',
+								data:{
+									user:user,
+									data:data
+								},
+								dataType:'json',
+								success:function(rs){
+									console.log(JSON.stringify(rs));
+									if(rs.result=='success'){
+										localStorage.setItem('$user',JSON.stringify(rs.data));
+										toMain();
+									}else{
+										//plus.nativeUI.toast('自动登陆失败,请重新登陆');
+										toLogin();
+									}
+								},
+								error:function(e){
+									console.log(JSON.stringify(e));
+									//plus.nativeUI.toast('自动登陆失败,请重新登陆');
+										toLogin();
+								}
+							});
+						}else{
+							toLogin();
+						}
+					
+				
+				function closeSplash(){
+					setTimeout(function() {
+					//关闭 splash
+					plus.navigator.closeSplashscreen();
+					}, 500);
+				}
+					
+			
+			});
+		
+		
+		</script>
+	</body>
+
+</html>

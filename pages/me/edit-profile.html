@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>个人信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+	   <link rel="stylesheet" href="../../Font-Awesome-3.2.1/css/font-awesome.min.css" />
+	   <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 50px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;	
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.head {
+				height: 60px;
+			}
+			#head {
+				line-height: 60px;
+			}
+			.head-img {
+				width: 60px;
+				height: 60px;
+			
+			}
+			#head-img1{
+				position: absolute;
+				bottom: 10px;right: 40px;
+				width: 40px;height: 40px;
+			}
+			.update{font-style: normal;color: #999999;margin-right: -25px;font-size: 15px}
+			
+			.mui-fullscreen{
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.z-mui-view{
+				height: 500px;
+			}
+			
+	    .mui-table-view .mui-media-object {
+		  line-height: 42px;
+		  max-width: 42px;
+		  height: 42px;
+		}
+			
+		.mui-table-view  .head-img {
+		   line-height: 65px;
+			max-width: 65px;
+		   height: auto;
+		   max-height: 65px;
+		}
+		
+		.mui-icon-gear{
+			color: #19ABF7;
+			font-size: 35px;
+		
+			
+		}
+		.icon-money{
+		  color: #F75C19;
+ 		  font-size: 35px;
+			
+		}
+		.mui-table-view .mui-media-object.mui-pull-left {
+		  margin-right: 20px;
+		}
+	
+		.list-title{
+			color: #000000;
+			font-size: 16px;
+			line-height: 28px;
+			
+		}
+		
+	/*	#list-menu .mui-table-view-cell{
+			padding: 8px 15px;
+		}*/
+		p#nick{
+		
+			color: #000000;
+			font-size: 18px;
+		}
+		.login-text{
+			line-height: 50px;
+			color: blue;
+			font-size: 16px;
+		}
+		span#add-profile{
+			font-size: 16px;
+			color: blue;
+			line-height: 50px;
+		}
+				</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">编辑个人资料</h1>
+		</header>
+			<div class="mui-content">
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="form-group">
+					<label class="control-label">姓名</label>
+					<input type="text" class="form-control mui-input-clear"  id="realname" name="name" placeholder="请输入姓名"/>
+					</div>
+					
+						<div class="form-group">
+					<label class="">性别</label>
+					<select class="form-control" id='sex' name='sex'>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">出生日期</label>
+					<input type="text" class="form-control mui-input-clear"  id="birthday"  placeholder="请输入出生日期"/>
+					</div>
+					
+				
+					
+					<div class="form-group">
+					<label class="control-label">身份证号</label>
+					<input type="text" class="form-control mui-input-clear"  id="identityno" name="identityno" placeholder="请输入身份证号"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">地址</label>
+					<input type="text" class="form-control mui-input-clear"  id="address" name="address" placeholder="请输入地址"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">邮箱</label>
+					<input type="text" class="form-control mui-input-clear"  id="email" name="email" placeholder="请输入邮箱"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">开户行</label>
+					<input type="text" class="form-control mui-input-clear"  id="bank_name" name="bank_name" placeholder="请输入开户行"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">银行账号</label>
+					<input type="text" class="form-control mui-input-clear"  id="bank_account" name="bank_account" placeholder="请输入银行账号"/>
+					</div>
+					
+				
+				</li>
+				
+				
+				
+						
+				</ul>
+				
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+					<div class="form-group">
+					<label class="control-label">婚姻状况</label>
+					<select class="form-control" id="marital">
+						<option value="未婚">未婚</option>
+						<option value="已婚">已婚</option>
+						<option value="离异">离异</option>
+					</select>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">兴趣爱好</label>
+					<textarea class="form-control" id="interest" rows="3">
+						
+					</textarea>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">备用手机号</label>
+					<input type="text" class="form-control mui-input-clear"  id="second_mobile" name="second_mobile" placeholder="请输入备用手机号"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">籍贯</label>
+					<input type="text" class="form-control mui-input-clear"  id="homeland" name="homeland" placeholder="请输入籍贯"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">微信</label>
+					<input type="text" class="form-control mui-input-clear"  id="weixin" name="wexin" placeholder="请输入微信"/>
+					</div>
+					
+					<div class="form-group">
+					<label class="control-label">QQ</label>
+					<input type="text" class="form-control mui-input-clear"  id="qq" name="qq" placeholder="请输入QQ号"/>
+					</div>
+					
+					</li>
+				
+				</ul>
+				<div class="panel-white">
+				<button class="mui-btn mui-btn-warning mui-btn-block" id="submit"> 提交</button>
+				
+				</div>
+			
+		</div>	
+					
+	
+	</body>
+	<script src="../../js/mui.min.js "></script>
+	<script src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/config.js" ></script>
+    <script type="text/javascript" src="../../js/lrz.bundle.js" ></script>
+	<script type="text/javascript" src="../../js/jquery-2.1.0.js" ></script>
+	<script>
+		mui.init();
+		
+		//获取用户信息
+			
+			mui.plusReady(function() {
+				
+				checkUserState();												
+			});
+		
+		window.addEventListener('show',function(){
+			checkUserState();
+		});
+		
+		function checkUserState(){
+			//获取用户信息
+			    var userInfo=app.getUserInfo();	
+			   
+			    if(userInfo.name!=null){
+			    	document.getElementById("realname").value=userInfo.name;	
+			    }							
+				if(userInfo.sex!=null){
+					document.getElementById("sex").value=userInfo.sex;
+				}
+				if(userInfo.birthday!=null){
+					document.getElementById("birthday").value=userInfo.birthday;
+				}
+				if(userInfo.identityno!=null){
+					document.getElementById("identityno").value=userInfo.identityno;
+				}
+				
+				
+				if(userInfo.address!=null){
+					document.getElementById("address").value=userInfo.address;
+				}
+							
+				if(userInfo.email!=null){
+					document.getElementById("email").value=userInfo.email;
+				}
+				
+				if(userInfo.bank_name!=null){
+					document.getElementById("bank_name").value=userInfo.bank_name;
+				}
+				
+				if(userInfo.bank_account!=null){
+					document.getElementById("bank_account").value=userInfo.bank_account;
+				}
+				
+				if(userInfo.marital!=null){
+					document.getElementById("marital").value=userInfo.marital;
+				}
+				if(userInfo.interest!=null){
+					document.getElementById("interest").value=userInfo.interest;
+				}
+				if(userInfo.second_mobile!=null){
+					document.getElementById("second_mobile").value=userInfo.second_mobile;
+				}
+				if(userInfo.homeland!=null){
+					document.getElementById("homeland").value=userInfo.homeland;
+				}
+				if(userInfo.weixin!=null){
+					document.getElementById("weixin").value=userInfo.weixin;
+				}
+				if(userInfo.qq!=null){
+					document.getElementById("qq").value=userInfo.qq;
+				}
+	
+		}
+		
+			document.getElementById("birthday").addEventListener('focus',function () {
+			  	var dDate=new Date();				
+				var minDate=new Date();				
+				var maxDate=new Date();
+				minDate.setFullYear(1960,1,1);
+				plus.nativeUI.pickDate( function(e) {			
+					var d=e.date;			
+					document.getElementById("birthday").value = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+ d.getDate();
+				   document.getElementById("birthday").blur();
+				},function(e){
+					document.getElementById("birthday").value  = "您没有选择日期";
+					document.getElementById("birthday").blur();
+				},{title:"请选择日期",date:dDate,minDate:minDate,maxDate:maxDate});
+			});
+		
+			document.getElementById('submit').addEventListener('tap',function(){
+			var name=$("#realname").val();
+			if(!name){
+				alert('请填写姓名');
+				return;
+			}
+			var sex=$('#sex').val();
+			var birthday=$("#birthday").val();
+			if(!birthday){
+				alert('请填写生日');
+				return;
+			}
+			var identityno=$("#identityno").val();
+			if(!identityno){
+				alert('请填写身份证号');
+				return;
+			}
+			var address=$('#address').val();
+			if(!address){
+				alert("请填写地址");
+				return;
+			}
+			var email=$('#email').val();
+			if(!email){
+				alert("请填写邮箱");
+				return;
+			}
+			var bank_name=$('#bank_name').val();
+			/*if(!bank_name){
+				alert("请填写开户行");
+				return;
+			}*/
+			var bank_account=$('#bank_account').val();
+			/*if(!bank_account){
+				alert("请填写银行账号");
+				return;
+			}*/
+			
+			var marital=$('#marital').val();
+			if(!marital){
+				alert("请填写婚姻状况");
+				return;
+			}
+			var interest=$('#interest').val();
+			/*if(!interest){
+				alert("请填写兴趣爱好");
+				return;
+			}*/
+			var second_mobile=$('#second_mobile').val();
+			/*if(!second_mobile){
+				alert("请填写备用手机号");
+				return;
+			}*/
+			var homeland=$('#homeland').val();
+			/*if(!homeland){
+				alert("请填写籍贯");
+				return;
+			}*/
+			var weixin=$('#weixin').val();
+		/*	if(!weixin){
+				alert("请填写微信号");
+				return;
+			}*/
+			var qq=$('#qq').val();
+			/*if(!qq){
+				alert("请填写qq号");
+				return;
+			}
+			*/
+			
+			var data={
+				name:name,
+				sex:sex,
+				birthday:birthday,
+				identityno:identityno,
+				address:address,
+				email:email,
+				bank_name:bank_name,
+				bank_account:bank_account,
+				marital:marital,
+				interest:interest,
+				second_mobile:second_mobile,
+				homeland:homeland,
+				weixin:weixin,
+				qq:qq
+			};
+			plus.nativeUI.showWaiting('正在提交,请稍候...');
+			$.ajax({
+				type:"post",
+				url:config.updateProfileUrl,
+				data:{
+					user:app.getUserState(),
+					data:data
+				},
+				dataType:'json',
+				success:function(rs){
+					console.log(JSON.stringify(rs));
+					plus.nativeUI.closeWaiting();
+					if(rs.result=='success'){
+						localStorage.setItem('$user',JSON.stringify(rs.data));
+						mui.toast('提交成功!');
+						var profile=plus.webview.getWebviewById('profile.html');
+						mui.fire(profile,'show',null);
+						mui.back();
+					}else{
+						
+					   mui.toast('提交失败,请稍后重试..');
+					}
+				},
+				error:function(e){
+					plus.nativeUI.closeWaiting();
+					console.log(JSON.stringify(e));
+					mui.toast('提交失败,请稍后重试..');
+				}
+			});
+		});
+		
+	
+	
+		
+	</script>
+
+</html>
