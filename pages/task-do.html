@@ -724,6 +724,7 @@
 								}
 							if(imgIndex==ImgAnswer.imageIndex){
 							$(this).find('.image-item').css('backgroundImage','url(' + ImgAnswer.answer[0].imgData+ ')');
+							$(this).find('.image-close').css('display','inline-block');
 							}
 						}
 						
@@ -856,6 +857,18 @@
 			return ;
 		},{provider:'baidu'});	
 		
+		var oldBack=mui.back;
+		mui.back=function(){
+			console.log(isR);
+			if(isR){
+				
+			stopRecord();
+			}
+			setTimeout(function(){
+			 oldBack();
+			},100);
+		
+		}
 		
 	});
 	

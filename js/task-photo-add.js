@@ -38,15 +38,18 @@ $(document).on('click','.image-list',function(){
 		var appendFile=function(p) {
 		
 			console.log(p);
+			placeholder.css('backgroundImage','url(' + p+ ')');
+			placeholder.find('.image-close').css('display','inline-block');
+//			plus.nativeUI.closeWaiting();
 			if (p) {
-				plus.nativeUI.showWaiting();
+//				plus.nativeUI.showWaiting();
 				//压缩图片
 				  lrz(p, {
 			        width: 1024
 			    })
 				  //处理成功
 			    .then(function (rst) {
-			    placeholder.css('backgroundImage','url(' + rst.base64+ ')');
+			    
 				
 				var task_guid=placeholder.parent().attr('task_guid');
 				var type=placeholder.parent().attr('type');
@@ -70,11 +73,10 @@ $(document).on('click','.image-list',function(){
 				
 				console.log(JSON.stringify(data));
 				plus.storage.setItem('answer-'+answer_guid+task_guid+question_guid+imageIndex,JSON.stringify(data));
-				plus.nativeUI.closeWaiting();
 			        })
 			     // 处理失败
 			   .catch(function (err){
-			   	plus.nativeUI.closeWaiting();
+//			   	plus.nativeUI.closeWaiting();
            			console.log('图片压缩失败!');
        			 });
 			}
@@ -83,4 +85,15 @@ $(document).on('click','.image-list',function(){
 		
 		});
 		
-	
+	$(document).on('click','.image-close',function(e){
+		e.stopPropagation();
+		var that =$(this);
+		var task_guid=that.parent().parent().attr('task_guid');
+		var type=that.parent().parent().attr('type');
+		var code=parseInt(that.parent().parent().attr('code'));
+		var question_guid=that.parent().parent().attr('question_guid');
+		var imageIndex=that.parent().parent().attr('imgIndex');
+		plus.storage.removeItem('answer-'+answer_guid+task_guid+question_guid+imageIndex);
+		that.parent().css('backgroundImage','url(../images/iconfont-tianjia.png)');
+		that.css('display','none');
+	});

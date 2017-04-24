@@ -101,6 +101,7 @@ function stopRecord(){
 //	er.style.display = "none";
 //	rt.innerText = "00:00:00";
 //	clearInterval( ri );
+console.log('停止录音');
    console.log(elm);
 	if(elm){
 		elm.find('.stop-record .stop').remove();

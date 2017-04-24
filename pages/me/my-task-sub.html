@@ -271,10 +271,7 @@
 			});
 		});
 		
-		//删除
-		mui(document).on('tap','.del-answer',function(){
-			var answerid=$(this).attr('answerid');
-			console.log('answerid:'+answerid);
+		function deleteAnswer(answerid){
 			var user=app.getUserState();
 			var data={
 				answerid:answerid,
@@ -305,7 +302,20 @@
 					console.log(JSON.stringify(e));
 				}
 			});
+		}
+		
+		//删除
+		mui(document).on('tap','.del-answer',function(){
+			var answerid=$(this).attr('answerid');
+			console.log('answerid:'+answerid);
+			plus.nativeUI.confirm('您确定要删除这个任务吗？删除后已提交的答案也将删除。',function(e){
+				if(e.index==1){
+					deleteAnswer();
+				}
+				
+			},'提示',['取消','确定']);
 		});
+		
 		
 		
 		

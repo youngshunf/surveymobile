@@ -56,14 +56,11 @@
 			contentWebview.evalJS('showSearch()');
 		});
 		
-	/*	window.addEventListener('show',function(){
-			if(contentWebview==null){
+		window.addEventListener('show',function(){
 				contentWebview = plus.webview.currentWebview().children()[0];
-			}else{
-				
-			}
+				contentWebview.evalJS('pulldownRefresh()');
 		});
-		*/
+		
 		
 	</script>
 

@@ -62,7 +62,7 @@ function getTask(task_guid){
 					mui.alert('您所在的区域已有人做了此任务，您不能再做此任务了,看看其他任务吧!');
 				}else if(rs.data=='has-getted'){
 					console.log(rs.data);
-					mui.alert('您已领取到上限，请到我的任务中执行或试试其他任务！');
+					mui.alert('您已领取到上限，请到首页-我的-我的任务中执行此任务或试试其他任务！');
 					return ;
 				}else{
 				
