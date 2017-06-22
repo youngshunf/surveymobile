@@ -659,6 +659,9 @@
 	
 	function checkLocalAnswer(task_guid){
 		var code=1;
+		var offline_save=$('.question_name').attr('offline_save');
+		console.log(offline_save);
+		
 		
 		$('.task-slide').each(function(){
 			var that=$(this);
@@ -733,16 +736,60 @@
 			
 			
 		});
-		$('.task-slide').addClass('hide');
-		$('#q'+code).removeClass('hide');
+		
+		if(offline_save==1){
+			$('.task-slide').each(function(){
+				$(this).addClass('hide');
+			})
+			$('.task-slide:last').removeClass('hide')
+		}else{
+			$('.task-slide').addClass('hide');
+			$('#q'+code).removeClass('hide');
+		}
 	}
 	
 	$(document).on('click','.save',function(){
 		if(isR){
 			stopRecord();
 		}
-		mui.alert('答案已保存,下次可以进入我的任务-待提交任务中进行提交!');
-		mui.back();
+		plus.nativeUI.confirm('离线保存后将不能再更改答案，并请当天尽快提交。您确定要离线保存吗?',function(e){
+				if(e.index==1){
+					$.ajax({
+			type:"post",
+			url:config.offlineSaveAnswerUrl,
+			data:{
+				user:app.getUserState(),
+				answer_guid:answer_guid,
+				locInfo:app.getLocInfo()
+			},
+			dataType:'json',
+			success:function(rs){
+				console.log(JSON.stringify(rs));
+				plus.nativeUI.closeWaiting();
+				if(rs.result=='success'){
+					mui.alert('答案已保存,下次可以进入我的任务-待提交任务中进行提交!');
+					mui.back();
+					var myTask=plus.webview.getWebviewById('my-task.html');
+					var myTasksub=plus.webview.getWebviewById('my-task-sub.html');
+					mui.fire(myTask,'show');
+					mui.fire(myTasksub,'show');
+					mui.back();
+				}else{
+				 console.log('离线保存失败!');
+				  mui.toast('离线保存失败!'+rs.errmsg);
+				}
+			},
+			error:function(e){
+				plus.nativeUI.closeWaiting();
+				console.log(JSON.stringify(e));
+				mui.toast('离线保存失败!'+e.status);
+			}
+		});
+				}
+				
+			},'提示',['取消','确定']);
+		
+		
 	});
 	var itemArr=[];
 	mui(document).on('click','.submit',function(){
@@ -861,13 +908,11 @@
 		mui.back=function(){
 			console.log(isR);
 			if(isR){
-				
 			stopRecord();
 			}
 			setTimeout(function(){
 			 oldBack();
 			},100);
-		
 		}
 		
 	});

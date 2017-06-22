@@ -527,3 +527,15 @@ span.p-badge {
 .mui-android .panel-white { 
 			  border-bottom: 1px solid #CCCCCC;
 }
+.go-top{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 999;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 50%;
+	background: #C4E3F3;
+	text-align: center;
+}

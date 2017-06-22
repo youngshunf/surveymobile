@@ -3,8 +3,8 @@
 	"id": "H55174E5A",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "随心赚",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.3.4",/*应用版本名称*/
-		"code": "88"
+		"name": "1.3.6",/*应用版本名称*/
+		"code": "91"
 	},
 	"description": "",/*应用描述信息*/
 	"icons": {
@@ -147,7 +147,7 @@
 					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
 					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
 					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": "unpackage/res/icons/144x144.png"
+					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
 				}
 			},
 			"splashscreen": {

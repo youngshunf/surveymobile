@@ -110,7 +110,7 @@
 	
 		<div id="pullrefresh1" class="mui-content mui-scroll-wrapper">
 			
-		<div class="mui-scroll">	
+		<!--<div class="mui-scroll">-->	
 		
 			<div id="task-list">
 			<div class="mui-loading">
@@ -177,8 +177,12 @@
 			</ul>-->
 			
 
-			</div>
-		
+			<!--</div>-->
+		<!--<div >
+			<a href="#topOne" target="_self"  class="go-top">
+				<i class="mui-icon mui-icon-arrowup"></i>
+			</a>
+		</div>-->
 		</div>
 	</body>
 	<script src="../../js/mui.min.js"></script>
@@ -282,6 +286,12 @@
 			plus.nativeUI.showWaiting('正在搜索,请稍候...');
 			pulldownRefresh();
 		});
+		
+		mui(document).on('tap','.go-top',function(){
+//			mui.alert('回到顶部');
+document.body.scrollTop;
+//			mui('#task-list').scrollTop();
+		})
 		
 		function getTaskList(direction){
 			

@@ -232,7 +232,7 @@
 						
 				</ul>
 				
-				<div class="panel-white">
+				<div class="mui-content-padded">
 				<button class="mui-btn mui-btn-warning mui-btn-block" id="submit"> 提交</button>
 				</div>
 				
@@ -343,7 +343,7 @@
 						mui.back();
 					}else{
 						console.log(JSON.stringify(rs));
-					   mui.toast('提交失败,请稍后重试..');
+					   mui.toast('提交失败,请稍后重试..'+rs.data);
 					}
 				},
 				error:function(e){
