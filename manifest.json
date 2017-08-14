@@ -1,10 +1,14 @@
 {
-	"@platforms": ["android", "iPhone", "iPad"],
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
 	"id": "H55174E5A",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "随心赚",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.3.6",/*应用版本名称*/
-		"code": "91"
+		"name": "1.4.1",/*应用版本名称*/
+		"code": "96"
 	},
 	"description": "",/*应用描述信息*/
 	"icons": {
@@ -80,19 +84,47 @@
 		"Device": {},
 		"Maps": {},
 		"Geolocation": {},
-		"Camera": {},"Audio":{},"Barcode":{},"Share":{}
+		"Camera": {},
+		"Audio": {},
+		"Barcode": {},
+		"Share": {},
+		"Contacts": {},
+		"NativeObj": {}
 	},
 	"plus": {
 		"splashscreen": {
 			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
-			"waiting": false,"delay":"0"
+			"waiting": false,
+			"delay": "0"
 		},
 		"runmode": "normal",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
 		"distribute": {
-			"plugins": {"share":{"weixin":{"appid":"wx76f488743a81b028","appsecret":"bd2924f78effdaeee8c33382a0079522","description":"可选，微信分享"},"qq":{"appid":"1105226714","description":"QQ分享"},"sina":{"appkey":"3691268790","appsecret":"c3943700781d52b40572483e9401ebc3","redirect_uri":"http://suoxinmr.com/","description":"可选，新浪微博分享"}},
-				"maps": {"baidu":{"appkey_ios":"smgPQjtbH1YoZQtvC2ck3XICUAu2PCHC","appkey_android":"h8qCo8cMy8vW1aSauznypA4f","appkey":"","description":""}
-					
+			"plugins": {
+				"share": {
+					"weixin": {
+						"appid": "wx76f488743a81b028",
+						"appsecret": "bd2924f78effdaeee8c33382a0079522",
+						"description": "可选，微信分享"
+					},
+					"qq": {
+						"appid": "1105226714",
+						"description": "QQ分享"
+					},
+					"sina": {
+						"appkey": "3691268790",
+						"appsecret": "c3943700781d52b40572483e9401ebc3",
+						"redirect_uri": "http://suoxinmr.com/",
+						"description": "可选，新浪微博分享"
+					}
+				},
+				"maps": {
+					"baidu": {
+						"appkey_ios": "smgPQjtbH1YoZQtvC2ck3XICUAu2PCHC",
+						"appkey_android": "h8qCo8cMy8vW1aSauznypA4f",
+						"appkey": "",
+						"description": ""
+					}
 				}
 			},
 			"apple": {
@@ -110,9 +142,36 @@
 				"keystore": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+					"<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+					"<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+					"<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>"
+				]
 			},
-			"orientation": ["portrait-primary", "portrait-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"orientation": [
+				"portrait-primary",
+				"portrait-secondary"
+			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
@@ -147,7 +206,8 @@
 					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
 					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
 					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
 				}
 			},
 			"splashscreen": {
@@ -178,7 +238,8 @@
 					"xhdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
 					"xxhdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 				}
-			},"debug":true
+			},
+			"debug": true
 		}
 	},
 	"dependencies": {
@@ -204,7 +265,9 @@
 					"js/init.js",
 					"css/mui.min.css",
 					"js/update.js",
-					"js/config.js"
+					"js/config.js",
+					"js/contacts.js",
+					"images/lanucher.png"
 				],
 				"refer": [
 					"main.html",
@@ -620,7 +683,8 @@
 					"css/bootstrap.min.css"
 				],
 				"refer": [
-					"pages/task-do.html"
+					"pages/task-do.html",
+					"pages/me/my-task.html"
 				],
 				"priority": 0
 			},
@@ -648,7 +712,8 @@
 					"images/astop.png",
 					"images/arecord.png",
 					"images/barcode.png",
-					"js/scan-barcode.js"
+					"js/scan-barcode.js",
+					"js/jquery-2.1.0.js"
 				],
 				"refer": [
 					"pages/barcode_scan.html"

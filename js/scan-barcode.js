@@ -19,6 +19,7 @@ function plusReady(){
 }
 
 function scaned( t, r, f ) {
+	code=localStorage.getItem('curentBarcode');
 	var d = new Date();
 	var h=d.getHours(),m=d.getMinutes(),s=d.getSeconds(),ms=d.getMilliseconds();
 	if ( h < 10 ) { h='0'+h; }
@@ -27,28 +28,40 @@ function scaned( t, r, f ) {
 	if ( ms < 10 ) { ms='00'+ms; } else if ( ms < 100 ) { ms='0'+ms; }
 	var ts = '['+h+':'+m+':'+s+'.'+ms+']';
 	var li=null,hl = document.getElementById("barcode-history"+code);
+	console.log("barcode-history"+code);
+	li = document.createElement('li');
+	li.className = 'ditem';
 	li.id = code;
-	var html = '<span class="hdata">';
+	if(blist.length > 0){
+		li = document.createElement('li');
+		li.className = 'ditem';
+		hl.insertBefore(li, hl.childNodes[0]);
+	} else{
+		li = document.getElementById('nohistory');
+	}
+	li.id = blist.length;
+	var html = '<p class="hdata mui-center">';
 	html += r;
-	html += '</span> <p class="btn btn-warning">点击查询</p>';
+	html += '</p> <p class=" mui-center"><span class="btn btn-warning">点击查询</span></p>';
 	li.innerHTML = html;
 	li.setAttribute( "onclick", "queryCode("+r+");" );
-	hl.innerHTML=li;
-	var that=$('#barcode-history'+code);
-	var task_guid=that.attr('task_guid');
-	var type=that.attr('type');
-	var code=parseInt(that.attr('code'));
-	var question_guid=that.attr('question_guid');
-	var data={
-			answer_guid:answer_guid,
-			task_guid:task_guid,
-			question_guid:question_guid,
-			type:type,
-			code:code,
-			qrcode:r,
-			answer_time:Date.parse(new Date()),
-			answer_address:app.getLocInfo(),
-		};
+//	$('#barcode-history'+code).html(li);
+//	hl.innerHTML=li;
+//	var that=$('#barcode-history'+code);
+//	var task_guid=that.attr('task_guid');
+//	var type=that.attr('type');
+//	var code=parseInt(that.attr('code'));
+//	var question_guid=that.attr('question_guid');
+//	var data={
+//			answer_guid:answer_guid,
+//			task_guid:task_guid,
+//			question_guid:question_guid,
+//			type:type,
+//			code:code,
+//			qrcode:r,
+//			answer_time:Date.parse(new Date()),
+//			answer_address:app.getLocInfo(),
+//		};
 //	blist[blist.length] = {type:t,result:r,file:f};
 //	update( t, r, f );
 }
@@ -64,17 +77,22 @@ function queryCode(qrcode){
 		data:{
 		 data:qdata	
 		},
+		dataType:'json',
 		url:config.queryCodeUrl,
 		success:function(rs){
 			console.log(rs);
 			if(rs.result=='success'){
 				var data=rs.data;
 				console.log(data);
+				data=JSON.parse(data);
 				var html="";
+				console.log(data.code);
 				if(data.code==0){
+					
 					var codeInfo=data.data.codeInfo;
+					console.log(codeInfo);
 					html='<li class="mui-table-view-cell">商品信息</li>'
-					+'<li><p>产品代码:'+code+'</p>'
+					+'<li><p>产品代码:'+qrcode+'</p>'
 					+'<p>上级编码:'+codeInfo.parentCode+'</p>'
 					+'<p>产品名称:'+codeInfo.materialShortName+'</p>'
 					+'<p>生产批次:'+codeInfo.batchCode+'</p>'
@@ -164,6 +182,6 @@ function cleanHistroy(code) {
 
 function startScan(code){
 	code=code;
-	
+	localStorage.setItem('curentBarcode',code);
 	clicked('../pages/barcode_scan.html',false,true);
 }
