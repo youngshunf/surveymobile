@@ -16,6 +16,7 @@ var config={
 	changePasswordUrl:serverBaseUrl+"site/change-password",//修改密码
 	getRecommendTaskUrl:serverBaseUrl+'task/get-recommend-task',
 	getTaskListUrl:serverBaseUrl+'task/get-task-list',//获取任务列表
+	queryCodeUrl:serverBaseUrl+'task/query-code',//获取任务列表
 	getMapTaskListUrl:serverBaseUrl+'task/get-maptask-list',//获取任务列表
 	getTaskUrl:serverBaseUrl+'task/get-task',//领取任务	
 	getMyTaskUrl:serverBaseUrl+'task/my-task',//已领取的任务列表
