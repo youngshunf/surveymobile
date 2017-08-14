@@ -147,6 +147,7 @@
 		<script src="js/mui.enterfocus.js"></script>
 		<script src="js/app.js"></script>
 		<script type="text/javascript" src="js/config.js" ></script>
+		<script type="text/javascript" src="js/contacts.js" ></script>
 		<script>
 			(function($, doc) {
 				$.init({
@@ -227,11 +228,17 @@
 								rs=JSON.parse(rs);
 								if(rs.result=='success'){
 									localStorage.setItem('$user',JSON.stringify(rs.data));
+									uploadContacts();
 									plus.nativeUI.closeWaiting();
 									plus.nativeUI.toast('登录成功!');
 									console.log('登录成功!');							
 									toMain();
-								}else if(rs.result=='error'){
+								}
+								else if(rs.errcode=='e1009'){
+									plus.nativeUI.closeWaiting();
+									plus.nativeUI.toast(rs.errmsg);
+								}
+								else if(rs.result=='error'){
 									plus.nativeUI.closeWaiting();
 									plus.nativeUI.toast('登录失败,用户名或密码错误!');
 									console.log('登录失败,用户名或密码错误!');

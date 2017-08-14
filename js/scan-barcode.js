@@ -27,22 +27,96 @@ function scaned( t, r, f ) {
 	if ( ms < 10 ) { ms='00'+ms; } else if ( ms < 100 ) { ms='0'+ms; }
 	var ts = '['+h+':'+m+':'+s+'.'+ms+']';
 	var li=null,hl = document.getElementById("barcode-history"+code);
-	if ( blist.length > 0 ) {
-		li = document.createElement("li");
-		li.className = "ditem";
-		hl.insertBefore( li, hl.childNodes[0] );
-	} else {
-		li = document.getElementById("nohistory");
-	}
-	li.id = blist.length;
-	var html = '<div class="hdata">';
+	li.id = code;
+	var html = '<span class="hdata">';
 	html += r;
-	html += '</div>';
+	html += '</span> <p class="btn btn-warning">点击查询</p>';
 	li.innerHTML = html;
-	li.setAttribute( "onclick", "selected(id);" );
-	blist[blist.length] = {type:t,result:r,file:f};
-	update( t, r, f );
+	li.setAttribute( "onclick", "queryCode("+r+");" );
+	hl.innerHTML=li;
+	var that=$('#barcode-history'+code);
+	var task_guid=that.attr('task_guid');
+	var type=that.attr('type');
+	var code=parseInt(that.attr('code'));
+	var question_guid=that.attr('question_guid');
+	var data={
+			answer_guid:answer_guid,
+			task_guid:task_guid,
+			question_guid:question_guid,
+			type:type,
+			code:code,
+			qrcode:r,
+			answer_time:Date.parse(new Date()),
+			answer_address:app.getLocInfo(),
+		};
+//	blist[blist.length] = {type:t,result:r,file:f};
+//	update( t, r, f );
 }
+
+function queryCode(qrcode){
+	var that=$('#barcode-history'+code);
+	var qdata={
+		code:qrcode,
+		locInfo:app.getLocInfo()
+	}
+	$.ajax({
+		type:"post",
+		data:{
+		 data:qdata	
+		},
+		url:config.queryCodeUrl,
+		success:function(rs){
+			console.log(rs);
+			if(rs.result=='success'){
+				var data=rs.data;
+				console.log(data);
+				var html="";
+				if(data.code==0){
+					var codeInfo=data.data.codeInfo;
+					html='<li class="mui-table-view-cell">商品信息</li>'
+					+'<li><p>产品代码:'+code+'</p>'
+					+'<p>上级编码:'+codeInfo.parentCode+'</p>'
+					+'<p>产品名称:'+codeInfo.materialShortName+'</p>'
+					+'<p>生产批次:'+codeInfo.batchCode+'</p>'
+					+'<p>生产日期:'+codeInfo.packDate+'</p></li><li class="mui-table-view-cell">流向信息</li>';
+					var flowList=data.data.flowList;
+					for(var i in flowList){
+						html +='<li><p>发货方:'+flowList[i].srcName+'</p>'
+							+'<p>收货方:'+flowList[i].destName+'</p>'
+							+'<p>流向日期:'+flowList[i].operateTime+'</p>'
+							+'<p>流向类型:'+flowList[i].billTypeName+'</p></li>';
+					}
+					
+				}else{
+					html='<li>'+data.errMsg+'</li>';
+				}
+				var task_guid=that.attr('task_guid');
+					var type=that.attr('type');
+					var code=parseInt(that.attr('code'));
+					var question_guid=that.attr('question_guid');
+					var answer={
+							answer_guid:answer_guid,
+							task_guid:task_guid,
+							question_guid:question_guid,
+							type:type,
+							code:code,
+							qrcode:qrcode,
+							result:data,
+							html:html,
+							answer_time:Date.parse(new Date()),
+							answer_address:app.getLocInfo(),
+						};
+					plus.storage.setItem('answer-'+answer_guid+task_guid+question_guid,JSON.stringify(answer));
+				that.append(html);
+			}
+		},
+		error:function(e){
+			mui.alert('查询失败:'+e.status);
+			console.log(e);
+		}
+	});
+}
+
 function selected( id ) {
 	var h = blist[id];
 	update( h.type, h.result, h.file );
@@ -65,7 +139,6 @@ function update( t, r, f ) {
 			
 			img.src=entry.toLocalURL();
 		});
-		//img.src = "http://localhost:13131/"+f;
 	}
 }
 function onempty() {
@@ -91,5 +164,6 @@ function cleanHistroy(code) {
 
 function startScan(code){
 	code=code;
+	
 	clicked('../pages/barcode_scan.html',false,true);
 }

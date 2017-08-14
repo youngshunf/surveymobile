@@ -12,16 +12,18 @@ var config={
 	loginUrl:serverBaseUrl+"site/login",//登录Url
 	registerUrl:serverBaseUrl+"site/register",//注册Url
 	sendVerifyCodeUrl:serverBaseUrl+"site/send-verify-code",//注册Url
-	sendVerifyCode2Url:serverBaseUrl+"site/send-verify-code2",//修改密码发送验证码
+	sendVerifyCode2Url:serverBaseUrl+"site/send-pwd-code",//修改密码发送验证码
 	changePasswordUrl:serverBaseUrl+"site/change-password",//修改密码
 	getRecommendTaskUrl:serverBaseUrl+'task/get-recommend-task',
 	getTaskListUrl:serverBaseUrl+'task/get-task-list',//获取任务列表
+	queryCodeUrl:serverBaseUrl+'task/query-code',//获取任务列表
 	getMapTaskListUrl:serverBaseUrl+'task/get-maptask-list',//获取任务列表
 	getTaskUrl:serverBaseUrl+'task/get-task',//领取任务	
 	getMyTaskUrl:serverBaseUrl+'task/my-task',//已领取的任务列表
 	getTaskInfoUrl:serverBaseUrl+'task/task-info',//获取任务信息
 	getTaskQuestionUrl:serverBaseUrl+'task/task-question',//获取任务详情
 	submitTaskAnswerUrl:serverBaseUrl+'task/submit-answer',//提交答案
+	offlineSaveAnswerUrl:serverBaseUrl+'task/offline-save-answer',//离线保存答案
 	uploadHeadImgUrl:serverBaseUrl+'user/upload-headimg',//上传头像
 	updateHomeInfoUrl:serverBaseUrl+'user/update-home-info',//修改家庭信息
 	updatePostUrl:serverBaseUrl+'user/update-post',//修改学历与职业信息

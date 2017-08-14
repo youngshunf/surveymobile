@@ -198,7 +198,7 @@
 				
 			</div>
 			<p class="center" style="margin-top: 10px;">
-				<button class="mui-btn mui-btn-outlined" id="more-task">更多任务</button>
+				<button class="mui-btn mui-btn-outlined" id="more-task">更多推荐任务</button>
 			</p>
 			
 		</div>
@@ -335,14 +335,16 @@
 	
 		});
 		
-		document.getElementById('more').addEventListener('tap',function(){		
-						mui.openWindow({
-						url:'task.html',
-						id:'task.html',
-								extras:{
-									type:0
-								}
-						});								
+		document.getElementById('more').addEventListener('tap',function(){	
+			var targetView=plus.webview.getWebviewById('main');
+			mui.fire(targetView,'taskpool',null);
+//						mui.openWindow({
+//						url:'task.html',
+//						id:'task.html',
+//								extras:{
+//									type:0
+//								}
+//						});								
 	
 		});
 		

@@ -250,7 +250,28 @@
 					</li>
 				</ul>
 				
-			
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" id="profile">
+							个人资料
+						</a>
+					</li>
+				</ul>
+				
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right" id="post">
+							个人学历与职业
+						</a>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" id="home-info">
+						<a class="mui-navigate-right">
+							家庭信息
+						</a>
+					</li>
+				</ul>
 				
 			
 				
@@ -411,6 +432,31 @@
 			});
 		}
 		
+		document.getElementById('profile').addEventListener('tap',function(){
+			mui.openWindow({
+				url:'profile.html',
+				id:'profile.html',
+				
+			});
+			
+		});
+		
+		document.getElementById('post').addEventListener('tap',function(){
+			mui.openWindow({
+				url:'post.html',
+				id:'post.html',
+				
+			});
+			
+		});
+		
+		document.getElementById('home-info').addEventListener('tap',function(){
+			mui.openWindow({
+				url:'home-info.html',
+				id:'home-info.html',
+				
+			});
+		});
 		
 		 //退出操作******************
 	/*	document.getElementById('logout').addEventListener('tap', function() {
