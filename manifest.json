@@ -3,8 +3,8 @@
 	"id": "H55174E5A",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "随心赚",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.4.0",/*应用版本名称*/
-		"code": "95"
+		"name": "1.3.6",/*应用版本名称*/
+		"code": "91"
 	},
 	"description": "",/*应用描述信息*/
 	"icons": {
@@ -80,7 +80,7 @@
 		"Device": {},
 		"Maps": {},
 		"Geolocation": {},
-		"Camera": {},"Audio":{},"Barcode":{},"Share":{},"Contacts":{}
+		"Camera": {},"Audio":{},"Barcode":{},"Share":{}
 	},
 	"plus": {
 		"splashscreen": {
@@ -110,7 +110,7 @@
 				"keystore": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
+				"permissions": ["<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>"]
 			},
 			"orientation": ["portrait-primary", "portrait-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
@@ -153,30 +153,30 @@
 			"splashscreen": {
 				"ios": {
 					"iphone": {
-						"default": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina47": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina55": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina55l": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+						"default": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
+						"retina47": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
+						"retina55": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
+						"retina55l": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 					},
 					"ipad": {
-						"portrait": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+						"portrait": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 					}
 				},
 				"android": {
-					"mdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+					"mdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 				}
 			},"debug":true
 		}
@@ -204,9 +204,7 @@
 					"js/init.js",
 					"css/mui.min.css",
 					"js/update.js",
-					"js/config.js",
-					"images/lanucher.png",
-					"js/contacts.js"
+					"js/config.js"
 				],
 				"refer": [
 					"main.html",
@@ -408,8 +406,7 @@
 				],
 				"refer": [
 					"pages/me/edit-name.html",
-					"pages/me/reset-password.html",
-					"pages/me/profile.html"
+					"pages/me/reset-password.html"
 				],
 				"priority": 0
 			},
@@ -651,12 +648,10 @@
 					"images/astop.png",
 					"images/arecord.png",
 					"images/barcode.png",
-					"js/scan-barcode.js",
-					"js/jquery-2.1.0.js"
+					"js/scan-barcode.js"
 				],
 				"refer": [
-					"pages/barcode_scan.html",
-					"login.html"
+					"pages/barcode_scan.html"
 				],
 				"priority": 0
 			},
