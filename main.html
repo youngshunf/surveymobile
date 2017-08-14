@@ -30,9 +30,9 @@
 				<span class="mui-icon fa fa-map-marker"></span>
 				<span class="mui-tab-label">随心赚</span>
 			</a>
-			<a class="mui-tab-item" href="pages/task/index.html">
+			<a id="taskTab" class="mui-tab-item" href="pages/task/index.html">
 				<span class="mui-icon fa fa-briefcase"></span>
-				<span class="mui-tab-label">工作台</span>
+				<span class="mui-tab-label">任务池</span>
 			</a>
 			<a class="mui-tab-item" href="pages/message/index.html">
 				<span class="mui-icon fa fa-envelope"></span>
@@ -125,6 +125,17 @@
 				if (defaultTab !== current) {
 					current.classList.remove('mui-active');
 					defaultTab.classList.add('mui-active');
+				}
+			});
+			document.addEventListener('taskpool', function() {
+				var taskTab = document.getElementById("taskTab");
+				//模拟首页点击
+				mui.trigger(taskTab, 'tap');
+				//切换选项卡高亮
+				var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+				if (taskTab !== current) {
+					current.classList.remove('mui-active');
+					taskTab.classList.add('mui-active');
 				}
 			});
 		</script>

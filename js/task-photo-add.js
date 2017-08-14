@@ -40,17 +40,16 @@ $(document).on('click','.image-list',function(){
 			console.log(p);
 			placeholder.css('backgroundImage','url(' + p+ ')');
 			placeholder.find('.image-close').css('display','inline-block');
-//			plus.nativeUI.closeWaiting();
+
 			if (p) {
-//				plus.nativeUI.showWaiting();
+				plus.nativeUI.showWaiting('正在压缩图片,请稍后..');
 				//压缩图片
 				  lrz(p, {
 			        width: 1024
 			    })
 				  //处理成功
 			    .then(function (rst) {
-			    
-				
+				plus.nativeUI.closeWaiting();
 				var task_guid=placeholder.parent().attr('task_guid');
 				var type=placeholder.parent().attr('type');
 				var code=parseInt(placeholder.parent().attr('code'));
@@ -76,7 +75,7 @@ $(document).on('click','.image-list',function(){
 			        })
 			     // 处理失败
 			   .catch(function (err){
-//			   	plus.nativeUI.closeWaiting();
+			   	plus.nativeUI.closeWaiting();
            			console.log('图片压缩失败!');
        			 });
 			}

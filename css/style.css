@@ -509,7 +509,10 @@ span.p-badge {
 	.mui-ios .mui-pull-top-pocket {
 		  top: 40px;
 		}
-	.mui-ios .mui-content{
+	.mui-ios .task .mui-pull-top-pocket {
+		  top: 0px;
+		}
+	.mui-ios .mui-content.task{
 			padding-top: 45px;
 		}
 	.mui-ios .panel-white { 
@@ -526,4 +529,16 @@ span.p-badge {
 		}
 .mui-android .panel-white { 
 			  border-bottom: 1px solid #CCCCCC;
+}
+.go-top{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 999;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	border-radius: 50%;
+	background: #C4E3F3;
+	text-align: center;
 }

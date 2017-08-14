@@ -108,15 +108,16 @@
 				</div>
 		</div>
 	
-		<div id="pullrefresh1" class="mui-content mui-scroll-wrapper">
+		<div id="pullrefresh1" class="mui-content mui-scroll-wrapper task">
 			
-		<div class="mui-scroll">	
+		<!--<div class="mui-scroll">-->	
 		
 			<div id="task-list">
 			<div class="mui-loading">
 				<div class="mui-spinner">
 				</div>
 			</div>	
+			
 			</div>
 			<!--<ul class="mui-table-view">
 				<li class="mui-table-view-cell">
@@ -177,8 +178,12 @@
 			</ul>-->
 			
 
-			</div>
-		
+			<!--</div>-->
+		<!--<div >
+			<a href="#topOne" target="_self"  class="go-top">
+				<i class="mui-icon mui-icon-arrowup"></i>
+			</a>
+		</div>-->
 		</div>
 	</body>
 	<script src="../../js/mui.min.js"></script>
@@ -283,11 +288,17 @@
 			pulldownRefresh();
 		});
 		
+		mui(document).on('tap','.go-top',function(){
+//			mui.alert('回到顶部');
+document.body.scrollTop;
+//			mui('#task-list').scrollTop();
+		})
+		
 		function getTaskList(direction){
 			
 			var user=app.getUserState();
-			if(!user){
-				$('#task-list').html('<p>请下拉刷新</p>');
+			if(!user.user_guid){
+				$('#task-list').html("<p style='margin-top:100px;text-align: center;'>请下拉刷新</p>");
 				return;
 			}
 			if(direction=='down'){

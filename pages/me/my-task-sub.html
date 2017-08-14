@@ -290,7 +290,7 @@
 					plus.nativeUI.closeWaiting();
 				   if(rs.result=='success'){
 				   	  plus.nativeUI.toast('删除成功!');
-				   	  getMyTask('down');
+				   	  pulldownRefresh();
 				   }else{
 				   	plus.nativeUI.toast('删除失败!');
 				   }
@@ -310,7 +310,7 @@
 			console.log('answerid:'+answerid);
 			plus.nativeUI.confirm('您确定要删除这个任务吗？删除后已提交的答案也将删除。',function(e){
 				if(e.index==1){
-					deleteAnswer();
+					deleteAnswer(answerid);
 				}
 				
 			},'提示',['取消','确定']);
