@@ -4,9 +4,15 @@ var photos=[];
 var placeholder=null;
 $(document).on('click','.image-list',function(){
 	var that=$(this);
+	var photo_type=that.attr('photo_type');
 	 placeholder=that.find('.image-item');
+	       if(photo_type==1){
+	       	 takefromCamera();
+	       	 return;
+	       }
 			var btnArray = [{
-				title: "拍照"
+				title: "拍照",
+				title:"从相册选取"
 			}];
 			plus.nativeUI.actionSheet({
 				cancel: "取消",
@@ -15,15 +21,7 @@ $(document).on('click','.image-list',function(){
 				var index = event.index;
 				switch (index) {
 					case 1:					
-						plus.camera.getCamera().captureImage(function(p){
-							plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
-								var localUrl=entry.toLocalURL();								
-								appendFile(localUrl);
-							}, function ( e ) {
-								console.log( "读取拍照文件错误："+e.message );
-							} );
-								
-						});	
+						takefromCamera();
 						break;
 					case 2:
 						plus.gallery.pick(function(p){
@@ -35,6 +33,18 @@ $(document).on('click','.image-list',function(){
 				}			
 		}, false);
 		
+		var takefromCamera=function(){
+			plus.camera.getCamera().captureImage(function(p){
+							plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
+								var localUrl=entry.toLocalURL();								
+								appendFile(localUrl);
+							}, function ( e ) {
+								console.log( "读取拍照文件错误："+e.message );
+							} );
+								
+						});	
+		}
+	
 		var appendFile=function(p) {
 		
 			console.log(p);
