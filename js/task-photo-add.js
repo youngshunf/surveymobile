@@ -5,47 +5,7 @@ var placeholder=null;
 $(document).on('click','.image-list',function(){
 	var that=$(this);
 	var photo_type=that.attr('photo_type');
-	 placeholder=that.find('.image-item');
-	       if(photo_type==1){
-	       	 takefromCamera();
-	       	 return;
-	       }
-			var btnArray = [{
-				title: "拍照",
-				title:"从相册选取"
-			}];
-			plus.nativeUI.actionSheet({
-				cancel: "取消",
-				buttons: btnArray
-			}, function(event) {
-				var index = event.index;
-				switch (index) {
-					case 1:					
-						takefromCamera();
-						break;
-					case 2:
-						plus.gallery.pick(function(p){
-				        appendFile(p);
-				    });
-						
-						break;
-					
-				}			
-		}, false);
-		
-		var takefromCamera=function(){
-			plus.camera.getCamera().captureImage(function(p){
-							plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
-								var localUrl=entry.toLocalURL();								
-								appendFile(localUrl);
-							}, function ( e ) {
-								console.log( "读取拍照文件错误："+e.message );
-							} );
-								
-						});	
-		}
-	
-		var appendFile=function(p) {
+	var appendFile=function(p) {
 		
 			console.log(p);
 			placeholder.css('backgroundImage','url(' + p+ ')');
@@ -90,6 +50,51 @@ $(document).on('click','.image-list',function(){
        			 });
 			}
 		};
+	var takefromCamera=function(){
+		plus.camera.getCamera().captureImage(function(p){
+						plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
+							var localUrl=entry.toLocalURL();								
+							appendFile(localUrl);
+						}, function ( e ) {
+							console.log( "读取拍照文件错误："+e.message );
+						} );
+							
+					});	
+	}
+	 placeholder=that.find('.image-item');
+	       if(photo_type==1){
+	       	 takefromCamera();
+	       	 return;
+	       }
+			var btnArray = [{
+				title: "拍照",
+			},
+			{
+				title: "从相册选取",
+			}
+			];
+			plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: btnArray
+			}, function(event) {
+				var index = event.index;
+				switch (index) {
+					case 1:					
+						takefromCamera();
+						break;
+					case 2:
+						plus.gallery.pick(function(p){
+				        appendFile(p);
+				    });
+						
+						break;
+					
+				}			
+		}, false);
+		
+	
+	
+		
 		
 		
 		});

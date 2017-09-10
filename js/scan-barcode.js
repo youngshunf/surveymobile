@@ -238,7 +238,7 @@ function startScan(code){
 }
 
 
-$(document).on('click','.img-upload',function(){
+mui(document).on('tap','.img-upload',function(){
 	var that=$(this);
 			var btnArray = [{
 				title: "拍照",
