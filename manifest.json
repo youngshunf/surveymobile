@@ -7,8 +7,8 @@
 	"id": "H55174E5A",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "随心赚",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.4.1",/*应用版本名称*/
-		"code": "96"
+		"name": "1.4.4",/*应用版本名称*/
+		"code": "99"
 	},
 	"description": "",/*应用描述信息*/
 	"icons": {
@@ -213,30 +213,30 @@
 			"splashscreen": {
 				"ios": {
 					"iphone": {
-						"default": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina47": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina55": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina55l": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+						"default": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
+						"retina47": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
+						"retina55": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
+						"retina55l": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 					},
 					"ipad": {
-						"portrait": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+						"portrait": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 					}
 				},
 				"android": {
-					"mdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "/Users/youngmac/private/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+					"mdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
 				}
 			},
 			"debug": true
@@ -301,7 +301,8 @@
 					"css/style.css",
 					"js/mui.enterfocus.js",
 					"css/bootstrap.min.css",
-					"js/config.js"
+					"js/config.js",
+					"js/contacts.js"
 				],
 				"refer": [
 					"reg.html",
