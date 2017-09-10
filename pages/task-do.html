@@ -395,7 +395,14 @@
 			}
 			
 			if(type==5){//二维码题
-			
+			 var answer=plus.storage.getItem('answer-'+answer_guid+task_guid+question_guid);
+			 if(!answer){
+			 	return false;
+			 }
+			 answer=JSON.parse(answer);
+			 if(!answer.result || !answer.imgs){
+			 	return false;
+			 }
 			}
 			
 			if(type==6){//定位题
@@ -705,6 +712,16 @@
 				}else if(type==2){//文本题
 					that.find('textarea').val(answer.answer);
 					that.find('textarea').html(answer.answer);
+				}else if(type==5){
+					that.find('.inputcode').val(answer.qrcode);
+					that.find('.codehistory').html(answer.html);
+					that.find('.baraddr').val(answer.inputAddress);
+					var imgs=answer.imgs || [];
+					var html='';
+					for(var i in imgs){
+						html+='<div class="col-xs-3 barcode-img"><span class="remove-barimg  mui-badge-danger"><span class="mui-icon mui-icon-closeempty"></span> </span><img class="img-responsive" src='+imgs[i].imgData+'></div>';
+					}
+					that.find('.img-upload').before(html);
 				}else if(type==6){//定位题
 					
 					var innerHtml='<li><p>'+answer.answer+'</p></li>';
@@ -812,7 +829,7 @@
 			var question_guid=that.attr('question_guid');
 			var type=that.attr('type');
 			
-			if(type==0 || type==1 || type==2 ||type==6 || type==7){
+			if(type==0 || type==1 || type==2 ||type==5 || type==6 || type==7 || type==8){
 				var answer=plus.storage.getItem('answer-'+answer_guid+task_guid+question_guid);
 				var answerStr='answer-'+answer_guid+task_guid+question_guid;
 				itemArr.push(answerStr);

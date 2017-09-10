@@ -542,3 +542,14 @@ span.p-badge {
 	background: #C4E3F3;
 	text-align: center;
 }
+
+.remove-barimg{
+	position: absolute;
+	top:0;
+	right: 0;
+	padding: 2px;
+	border-radius: 5px;
+}
+.remove-barimg .mui-icon{
+	font-size:20px;
+}
