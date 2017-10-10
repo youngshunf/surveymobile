@@ -168,7 +168,7 @@
 				我的钱包  <span class="mui-pull-right red"> </span>
 			</a>
 		</li>
-		<!--<li class="mui-table-view-cell" id="my-collect">
+		<!--<li claswes="mui-table-view-cell" id="my-collect">
 			<a class="mui-navigate-right">
 				我的收藏  <span class="mui-pull-right "></span>
 			</a>
@@ -199,6 +199,11 @@
 		<li class="mui-table-view-cell" id="clear-storage">
 			<a class="mui-navigate-right">
 				清除缓存
+			</a>
+		</li>
+		<li class="mui-table-view-cell" id="clear-storage">
+			<a class="">
+				当前应用版本<span id="appVersion" class="mui-pull-right">1.4.5</span>
 			</a>
 		</li>
 	</ul>
@@ -232,6 +237,11 @@
 			});
 			
 			checkUserState();	
+			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+		        var wgtVer=inf.version;
+		        $('#appVersion').html(wgtVer);
+		        console.log("当前应用版本："+wgtVer);
+		    });
 		});
 		
 		window.addEventListener('show',function(){
