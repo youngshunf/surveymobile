@@ -201,6 +201,11 @@
 				清除缓存
 			</a>
 		</li>
+		<li class="mui-table-view-cell" id="clear-storage">
+			<a class="">
+				当前应用版本<span id="appVersion" class="mui-pull-right">1.4.5</span>
+			</a>
+		</li>
 	</ul>
 	
 	<ul class="mui-table-view" style="margin-top: 15px;">
@@ -232,6 +237,11 @@
 			});
 			
 			checkUserState();	
+			plus.runtime.getProperty(plus.runtime.appid,function(inf){
+		        var wgtVer=inf.version;
+		        $('#appVersion').html(wgtVer);
+		        console.log("当前应用版本："+wgtVer);
+		    });
 		});
 		
 		window.addEventListener('show',function(){
