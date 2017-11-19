@@ -345,6 +345,7 @@ document.body.scrollTop;
 					plus.nativeUI.closeWaiting();
 					closePullRefresh();
 					plus.nativeUI.toast('刷新列表失败!');
+					$('#task-list').html("<p style='margin-top:100px;text-align: center;'>加载列表失败,请下拉刷新!</p>");
 					console.log(JSON.stringify(e));
 				}
 			});

@@ -213,30 +213,30 @@
 			"splashscreen": {
 				"ios": {
 					"iphone": {
-						"default": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina47": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina55": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",
-						"retina55l": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+						"default": "/Users/yangshunfu/company/随心赚/lanucher.png", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "/Users/yangshunfu/company/随心赚/lanucher.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+						"retina40": "/Users/yangshunfu/company/随心赚/lanucher.png",
+						"retina47": "/Users/yangshunfu/company/随心赚/lanucher.png",
+						"retina55": "/Users/yangshunfu/company/随心赚/lanucher.png",
+						"retina55l": "/Users/yangshunfu/company/随心赚/lanucher.png"
 					},
 					"ipad": {
-						"portrait": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+						"portrait": "/Users/yangshunfu/company/随心赚/lanucher.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "/Users/yangshunfu/company/随心赚/lanucher.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "/Users/yangshunfu/company/随心赚/lanucher.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "/Users/yangshunfu/company/随心赚/lanucher.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "/Users/yangshunfu/company/随心赚/lanucher.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "/Users/yangshunfu/company/随心赚/lanucher.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "/Users/yangshunfu/company/随心赚/lanucher.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "/Users/yangshunfu/company/随心赚/lanucher.png"
 					}
 				},
 				"android": {
-					"mdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*大屏启动图片，分辨率：320x442*/
-					"hdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "E:/杨顺富/private/随心赚/欢迎页20160201/lanucher.png"
+					"mdpi": "/Users/yangshunfu/company/随心赚/lanucher.png", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "/Users/yangshunfu/company/随心赚/lanucher.png", /*大屏启动图片，分辨率：320x442*/
+					"hdpi": "/Users/yangshunfu/company/随心赚/lanucher.png", /*高分屏启动图片，分辨率：480x762*/
+					"xhdpi": "/Users/yangshunfu/company/随心赚/lanucher.png", /*720P高分屏启动图片，分辨率：720x1242*/
+					"xxhdpi": "/Users/yangshunfu/company/随心赚/lanucher.png"
 				}
 			},
 			"debug": true
