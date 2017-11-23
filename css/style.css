@@ -515,13 +515,13 @@ span.p-badge {
 	.mui-ios .mui-content.task{
 			padding-top: 45px;
 		}
-	.mui-ios .panel-white { 
+	/*.mui-ios .panel-white { 
 		  border-bottom: 1px solid #CCCCCC;
 		  z-index: 99999;
 		  position: fixed;
 		  top:0;
 		  width: 100%;
-		}
+		}*/
 /*android*/
  .mui-android .action-container{
 			width: 100%;
